@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Finalize your order of Wakaranai products"
+    />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Kiwi+Maru&family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Momo+Trust+Sans:wght@200..800&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Wakaranai | Checkout</title>
+  </head>
+  <body>
+    <main>
+      <h1>Checkout</h1>
+      <section>
+        <h2 class="hidden">summary, billing and delivery details</h2>
+        <article class="checkout-summary">
+          <h3>Summary</h3>
+          <figure class="summary-table-checkout">
+            <div class="summary-categories-checkout">
+              <h4>item</h4>
+              <h4>quantity</h4>
+              <h4>price</h4>
+            </div>
+            <div class="summary-items-checkout">
+              <div class="summary-item-checkout">
+                <h5>Item name here</h5>
+                <p>qty</p>
+                <p>1234:-</p>
+              </div>
+            </div>
+            <div class="summary-totals-checkout">
+              <div class="summary-totals-item-checkout">
+                <h5>Item(s)</h5>
+                <p>1234:-</p>
+              </div>
+              <div class="summary-totals-shipping-checkout">
+                <h5>Shipping:</h5>
+                <p></p>
+              </div>
+              <div class="summary-totals-total-checkout">
+                <h5>Total:</h5>
+                <p></p>
+              </div>
+            </div>
+          </figure>
+        </article>
+        <article>
+          <form>
+            <fieldset>
+              <legend>Delivery Address</legend>
+
+              <label for="first-name-checkout" class="hidden">first name</label>
+              <input
+                type="text"
+                name="first-name-checkout"
+                id="first-name-checkout"
+                placeholder="First Name*"
+                required
+              />
+              <label for="last-name-checkout" class="hidden">last name</label>
+              <input
+                type="text"
+                name="last-name-checkout"
+                id="last-name-checkout"
+                placeholder="Last Name*"
+                required
+              />
+              <label for="address-checkout" class="hidden">address</label>
+              <input
+                type="text"
+                name="address-checkout"
+                id="address-checkout"
+                placeholder="Address*"
+                required
+              />
+              <label for="town-city-checkout" class="hidden">town/city</label>
+              <input
+                type="text"
+                name="town-city-checkout"
+                id="town-city-checkout"
+                placeholder="Town/City*"
+                required
+              />
+              <label for="province-checkout" class="hidden">province</label>
+              <input
+                type="text"
+                name="province-checkout"
+                id="province-checkout"
+                placeholder="Province"
+                required
+              />
+              <label for="house-unit-apt-nr-checkout" class="hidden"
+                >house/unit/apt nr</label
+              >
+              <input
+                type="text"
+                name="house-unit-apt-nr-checkout"
+                id="house-unit-apt-nr-checkout"
+                placeholder="House/Unit/Apt nr"
+                required
+              />
+              <label for="postal-code-checkout" class="hidden"
+                >postal code</label
+              >
+              <input
+                type="text"
+                name="postal-code-checkout"
+                id="postal-code-checkout"
+                placeholder="Postal Code*"
+                required
+              />
+            </fieldset>
+            <fieldset>
+              <legend>Payment Options</legend>
+
+              <div class="payment-option-container">
+                <label for="debit-credit-card">Debit/Credit Card</label>
+                <input
+                  type="radio"
+                  id="debit-credit-card"
+                  name="payment-option"
+                  value="debit/credit card"
+                />
+                <label for="klarna">Klarna</label>
+                <input
+                  type="radio"
+                  id="klarna"
+                  name="payment-option"
+                  value="klarna"
+                />
+                <label for="swish">Swish</label>
+                <input
+                  type="radio"
+                  id="swish"
+                  name="payment-option"
+                  value="swish"
+                />
+                <label for="paypal">PayPal</label>
+                <input
+                  type="radio"
+                  id="paypal"
+                  name="payment-option"
+                  value="paypal"
+                />
+              </div>
+            </fieldset>
+            <label for="checkout-submit" class="hidden">submit-button</label>
+            <input
+              type="submit"
+              id="checkout-submit"
+              value="complete purchase"
+            />
+          </form>
+        </article>
+      </section>
+    </main>
+    <script
+      src="https://kit.fontawesome.com/aa8166dc37.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

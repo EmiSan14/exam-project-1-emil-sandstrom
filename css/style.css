@@ -15,6 +15,10 @@ img {
   color: var(--color-primary);
 }
 
+.hidden {
+  display: none;
+}
+
 /* ==== HEADER ==== */
 
 .header-upper,
@@ -74,12 +78,12 @@ footer ul {
   list-style: none;
 }
 
-footer h2,
+footer h3,
 footer li a {
   color: var(--color-text-secondary);
 }
 
-footer h2 {
+footer h3 {
   font-family: var(--font-headers);
   font-size: 16px;
   margin-bottom: 10px;
@@ -92,7 +96,7 @@ footer li a {
 }
 
 footer li a:hover {
-  color: #b2b2b2;
+  color: #ebebeb;
 }
 
 .footer-header {
@@ -154,4 +158,15 @@ footer li a:hover {
   justify-content: space-between;
   margin-top: 20px;
   margin-bottom: 0;
+}
+
+/* ==== START PAGE ==== */
+
+.carousel-container {
+  width: 100%;
+}
+
+.btn-trashcan {
+  min-height: 20px;
+  min-width: 20px;
 }
