@@ -5,8 +5,12 @@
   padding: 0;
 }
 
+main {
+  margin: 32px 10px;
+}
+
 img {
-  width: 10%;
+  width: 100%;
 }
 
 /* ==== REUSABLE ==== */
@@ -160,13 +164,51 @@ footer li a:hover {
   margin-bottom: 0;
 }
 
+/* ==== OFTEN OCCURRING MARGINS/PADDING ==== */
+
+.carousel,
+.product-grid-section h2 {
+  margin-bottom: var(--big-distance-mobile);
+}
+
+.product-container-start > * {
+  margin-bottom: var(--small-distance-mobile);
+}
+
+.product-container-start h3,
+.product-container-start div,
+.product-container-start button {
+  padding: 0 5px;
+}
+
+/* ==== FONT-FAMILIES ==== */
+
+.product-start-numbers-container p {
+  font-family: var(--font-numbers);
+}
+
 /* ==== START PAGE ==== */
+
+#main-start {
+  margin-left: 0;
+  margin-right: 0;
+}
 
 .carousel-container {
   width: 100%;
 }
 
-.btn-trashcan {
-  min-height: 20px;
-  min-width: 20px;
+.product-grid-section {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.product-container-start {
+  width: 48%;
+}
+
+/* ============ TEMPORARY. DELETE LATER. ============ */
+
+.temporary-navigation {
+  padding: 20px 0;
 }

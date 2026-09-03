@@ -16,4 +16,11 @@
   --font-sub-headers: "Momo Trust Sans";
   --font-numbers: "Libertinus Serif";
   --font-text: "Source Sans 3";
+
+  /* ==== MARGINS & PADDING ====*/
+
+  --big-distance-mobile: 32px;
+  --medium-distance-mobile: 20px;
+  --small-distance-mobile: 10px;
+  --tiny-distance-mobile: 5px;
 }
