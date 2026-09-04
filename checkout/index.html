@@ -18,12 +18,12 @@
   </head>
   <body>
     <main>
-      <h1>Checkout</h1>
       <section>
-        <h2 class="hidden">summary, billing and delivery details</h2>
         <article class="checkout-summary">
-          <h3>Summary</h3>
+          <h1 class="checkout-main-heading">Checkout</h1>
+          <h2 class="hidden">summary, billing and delivery details</h2>
           <figure class="summary-table-checkout">
+            <h3>Summary</h3>
             <div class="summary-categories-checkout">
               <h4>item</h4>
               <h4>quantity</h4>
@@ -36,7 +36,7 @@
                 <p>1234:-</p>
               </div>
             </div>
-            <div class="summary-totals-checkout">
+            <div id="summary-totals-checkout">
               <div class="summary-totals-item-checkout">
                 <h5>Item(s)</h5>
                 <p>1234:-</p>
@@ -45,17 +45,17 @@
                 <h5>Shipping:</h5>
                 <p></p>
               </div>
-              <div class="summary-totals-total-checkout">
+              <div id="summary-totals-total-checkout">
                 <h5>Total:</h5>
                 <p></p>
               </div>
             </div>
           </figure>
         </article>
-        <article>
+        <article class="checkout-form">
           <h3 class="hidden">Delivery address and payment options</h3>
           <form>
-            <fieldset>
+            <fieldset class="checkout-form-delivery-address">
               <legend>Delivery Address</legend>
 
               <label for="first-name-checkout" class="hidden">first name</label>
@@ -119,38 +119,59 @@
                 required
               />
             </fieldset>
-            <fieldset>
+            <fieldset class="checkout-form-payment-option">
               <legend>Payment Options</legend>
 
               <div class="payment-option-container">
-                <label for="debit-credit-card">Debit/Credit Card</label>
-                <input
-                  type="radio"
-                  id="debit-credit-card"
-                  name="payment-option"
-                  value="debit/credit card"
-                />
-                <label for="klarna">Klarna</label>
-                <input
-                  type="radio"
-                  id="klarna"
-                  name="payment-option"
-                  value="klarna"
-                />
-                <label for="swish">Swish</label>
-                <input
-                  type="radio"
-                  id="swish"
-                  name="payment-option"
-                  value="swish"
-                />
-                <label for="paypal">PayPal</label>
-                <input
-                  type="radio"
-                  id="paypal"
-                  name="payment-option"
-                  value="paypal"
-                />
+                <div class="payment-option-div">
+                  <input
+                    type="radio"
+                    id="debit-credit-card"
+                    name="payment-option"
+                    value="debit/credit card"
+                  />
+                  <label for="debit-credit-card">Debit/Credit Card</label>
+                  <img
+                    src="../images/mastercard-logo.webp"
+                    alt="mastercard logo"
+                  />
+                  <img
+                    src="../images/amex-logo.png"
+                    alt="american express logo"
+                  />
+                  <img src="../images/visa-logo.webp" alt="visa logo" />
+                  <img src="../images/unionpay-logo.webp" />
+                </div>
+                <div class="payment-option-div">
+                  <input
+                    type="radio"
+                    id="klarna"
+                    name="payment-option"
+                    value="klarna"
+                  />
+                  <label for="klarna">Klarna</label>
+                  <img src="../images/klarna-logo.webp" alt="klarna logo" />
+                </div>
+                <div class="payment-option-div">
+                  <input
+                    type="radio"
+                    id="swish"
+                    name="payment-option"
+                    value="swish"
+                  />
+                  <label for="swish">Swish</label>
+                  <img src="../images/swish-logo.png" alt="swish logo" />
+                </div>
+                <div id="payment-option-bottom" class="payment-option-div">
+                  <input
+                    type="radio"
+                    id="paypal"
+                    name="payment-option"
+                    value="paypal"
+                  />
+                  <label for="paypal">PayPal</label>
+                  <img src="../images/paypal-logo.png" alt="paypal logo" />
+                </div>
               </div>
             </fieldset>
             <label for="checkout-submit" class="hidden">submit-button</label>
@@ -165,6 +186,7 @@
       <div class="temporary-navigation">
         <a href="../index.html">start</a>
         <a href="../product/index.html">product</a>
+        <a href="../cart/index.html">cart</a>
         <a href="../success/index.html">success</a>
         <a href="../account/login.html">login</a>
         <a href="../account/register.html">register</a>
