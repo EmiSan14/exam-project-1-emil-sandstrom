@@ -19,7 +19,7 @@
 
   <body>
     <main>
-      <h1>Cart</h1>
+      <h1 class="cart-h1">Cart</h1>
       <section class="cart">
         <h2 class="hidden">cart-products and summary</h2>
         <article class="cart-products">
@@ -48,7 +48,6 @@
                   <p>1</p>
                   <button>+</button>
                 </div>
-                <p>Size: X</p>
               </div>
             </div>
             <div class="trashcan-cart">
@@ -68,7 +67,15 @@
               placeholder="Discount Code"
               aria-required="false"
             />
-            <input type="submit" value="apply" />
+            <label for="discount-code-apply-button" class="hidden"
+              >apply discount code</label
+            >
+            <input
+              type="submit"
+              id="discount-code-apply-button"
+              name="discount-code-apply-button"
+              value="apply"
+            />
           </form>
           <h3>Summary</h3>
           <figure class="summary-table-cart">
