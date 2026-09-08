@@ -32,7 +32,7 @@
             <div class="cart-product-information">
               <h4>Product name</h4>
               <div class="cart-product-prices">
-                <p>104.29:-</p>
+                <p class="price-line-through">104.29:-</p>
                 <p>104.29:-</p>
               </div>
               <div class="cart-stars">
@@ -44,7 +44,7 @@
               </div>
               <div class="qty-picker-and-size-btn-cart">
                 <div class="qty-picker-cart">
-                  <button>-</button>
+                  <button>&#8722;</button>
                   <p>1</p>
                   <button>+</button>
                 </div>
@@ -73,6 +73,7 @@
             <input
               type="submit"
               id="discount-code-apply-button"
+              class="uppercase"
               name="discount-code-apply-button"
               value="apply"
             />
@@ -81,14 +82,14 @@
           <figure class="summary-table-cart">
             <div class="summary-categories-cart">
               <h4>item</h4>
-              <h4>quantity</h4>
-              <h4>price</h4>
+              <h4 class="text-align-center">quantity</h4>
+              <h4 class="text-align-right">price</h4>
             </div>
             <div class="summary-items-cart">
               <div class="summary-item-cart">
                 <h5>Item name here</h5>
-                <p>qty</p>
-                <p>1234:-</p>
+                <p class="text-align-center">qty</p>
+                <p class="text-align-right">1234:-</p>
               </div>
             </div>
             <div class="summary-totals-cart">
@@ -98,11 +99,11 @@
               </div>
               <div class="summary-totals-shipping-cart">
                 <h5>Shipping:</h5>
-                <p></p>
+                <p>199:-</p>
               </div>
               <div class="summary-totals-total-cart">
                 <h5>Total:</h5>
-                <p></p>
+                <p>99999:-</p>
               </div>
             </div>
             <button>proceed to checkout</button>

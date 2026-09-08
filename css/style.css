@@ -36,6 +36,22 @@ button {
   display: none;
 }
 
+.price-line-through {
+  text-decoration: line-through;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
 /* ==== HEADER ==== */
 
 .header-upper,
@@ -270,7 +286,6 @@ footer li a:hover {
 
 .product-container-start h3,
 .product-container-start div,
-.cart-product-information,
 .summary-item-success-details {
   padding: 0 5px;
 }
@@ -295,11 +310,34 @@ footer li a:hover {
 }
 
 button,
+#discount-code-input,
 #discount-code-apply-button,
 #checkout-submit,
 #login-submit,
 #register-submit {
+  padding: 8px;
+}
+
+.cart-product-information {
   padding: 5px;
+}
+
+.qty-picker-spec-product button {
+  padding: 2px;
+}
+
+.qty-picker-cart button {
+  padding: 1px;
+}
+
+.specific-product-prices,
+.qty-picker-spec-product,
+.cart-product-prices {
+  gap: var(--small-distance-mobile);
+}
+
+.qty-picker-cart {
+  gap: 5px;
 }
 
 /* Needed to overwrite prev properly */
@@ -351,6 +389,11 @@ fieldset,
 #login-submit,
 #register-submit {
   border: none;
+}
+
+.qty-picker-spec-product button,
+.qty-picker-cart button {
+  border-radius: 50%;
 }
 
 button,
@@ -448,48 +491,143 @@ button,
 
 /* ==== FONT-SIZES ==== */
 
-.qty-picker-spec-product button,
-.qty-picker-spec-product p {
+.qty-picker-spec-product p,
+.specific-product-stars p {
   font-size: 32px;
 }
 
 h1,
 .product-grid-section h2,
 .specific-product-prices p,
-.specific-product-stars p {
+.qty-picker-spec-product button,
+.cart-summary h3,
+.summary-table-checkout h3,
+.success-summary h3 {
   font-size: 24px;
 }
 
 .specific-product-information h2,
-.specific-product-reviews-and-tags h2 {
+.specific-product-reviews-and-tags h2,
+.qty-picker-cart p,
+.checkout-form-delivery-address legend,
+.checkout-form-payment-option legend {
   font-size: 20px;
 }
 
 .main-hero-image-text,
 .product-start-number-stars p,
 .specific-product-information h3,
-.review-name {
+.review-name,
+.cart-stars p,
+.success-success-message h3,
+.summary-details-success h4,
+.items-success h4,
+.social-media-success h3 {
   font-size: 16px;
 }
 
 .product-start-numbers-container p,
 .review-text,
-.tag {
+.tag,
+.cart-product-prices p,
+.clear-cart-button,
+#discount-code-input,
+#discount-code-apply-button,
+.success-item-price {
   font-size: 14px;
+}
+
+.summary-categories-cart h4,
+.summary-item-cart p,
+.summary-totals-cart p,
+.qty-picker-cart button,
+.summary-categories-checkout h4,
+.summary-item-checkout p,
+.summary-totals-item-checkout p,
+.summary-totals-shipping-checkout p,
+#summary-totals-total-checkout p,
+.checkout-form-delivery-address input,
+#email-login-page,
+#password-login-page,
+#username-register-page,
+#email-register-page,
+#password-register-page,
+#password-register-page-repeat,
+#login-submit,
+#register-submit {
+  font-size: 13px;
 }
 
 .product-start-name,
 .add-to-cart-button,
-.share-button {
+.share-button,
+.cart-product-information h4,
+.summary-table-cart button,
+.checkout-form-payment-option label,
+#checkout-submit,
+.success-success-message p,
+.success-item-header,
+.success-item-qty,
+#continue-shopping-button,
+.login-page > p,
+.register-page > p,
+.form-login > p,
+.form-register > p {
   font-size: 12px;
 }
 
-.product-start-cta {
+.product-start-cta,
+.summary-item-cart h5,
+.summary-totals-cart h5,
+.summary-item-checkout h5,
+.summary-totals-item-checkout h5,
+.summary-totals-shipping-checkout h5,
+#summary-totals-total-checkout h5,
+.summary-detail-success h5,
+.summary-detail-success p,
+.register-checkbox-div label {
   font-size: 10px;
 }
 
 .carousel-cta {
   font-size: 8px;
+}
+
+/* ==== FONT-WEIGHT ==== */
+
+.product-start-name,
+.product-start-numbers-container p,
+.specific-product-information h2,
+.specific-product-information h3,
+.specific-product-reviews-and-tags h2,
+.cart-product-information h4,
+.summary-categories-cart h4,
+.summary-categories-checkout h4,
+.summary-item-cart h5,
+.summary-totals-item-cart h5,
+.summary-totals-shipping-cart h5,
+.summary-totals-total-cart h5 {
+  font-weight: 400;
+}
+
+/* **KEEP** FONT: --font-headers */
+
+/* **KEEP** FONT: --font-sub-headers-and-buttons */
+
+.review-name {
+  font-weight: 500;
+}
+
+/* **KEEP** FONT: --font-numbers */
+
+/* **KEEP** FONT: --font-text */
+
+.summary-categories-cart h4 {
+  font-weight: 500;
+}
+
+.review-text {
+  font-weight: 300;
 }
 
 /* ==== COLOR ==== */
@@ -521,6 +659,10 @@ h1,
   color: var(--color-primary);
 }
 
+.tag {
+  color: var(--color-text);
+}
+
 .carousel button,
 .product-start-cta,
 .add-to-cart-button,
@@ -531,6 +673,60 @@ h1,
 #login-submit,
 #register-submit {
   color: var(--color-text-secondary);
+}
+
+.product-start-number-stars p,
+.specific-product-stars p,
+.cart-stars p {
+  color: var(--color-stars-filled);
+}
+
+/* ==== HEIGHT ==== */
+
+.cart-product img {
+  min-height: 104px;
+}
+
+/* ==== WIDTH ==== */
+
+.cart-product {
+  width: 100%;
+}
+
+.clear-cart-button {
+  width: 90%;
+}
+
+#discount-code-input {
+  width: 60%;
+}
+
+.add-to-cart-button {
+  width: 50%;
+}
+
+#discount-code-apply-button {
+  width: 35%;
+}
+
+.share-button {
+  width: 35%;
+}
+
+.qty-picker-spec-product button {
+  min-width: 35px;
+}
+
+.qty-picker-cart button {
+  min-width: 22px;
+}
+
+/* ==== DISPLAY/PLACEMENT ==== */
+
+.specific-product-prices,
+.cart-products,
+.cart-product-prices {
+  display: flex;
 }
 
 /* ==== START PAGE ==== */
@@ -576,7 +772,27 @@ h1,
   width: 94%;
 }
 
+/* ==== SPEC PRODUCT PAGE ==== */
+
+.specific-product-stars {
+  display: flex;
+}
+
+.qty-picker-spec-product {
+  display: flex;
+}
+
+.specific-product-ctas {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* ==== CART PAGE ==== */
+
+.cart-products {
+  flex-direction: column;
+  align-items: center;
+}
 
 .cart-product {
   display: flex;
@@ -603,6 +819,29 @@ h1,
 
 .trashcan-cart i {
   color: var(--color-primary);
+}
+
+.cart-summary form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary-table-cart {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-categories-cart,
+.summary-item-cart {
+  display: grid;
+  grid-template-columns: 60% 20% 20%;
+}
+
+.summary-totals-item-cart,
+.summary-totals-shipping-cart,
+.summary-totals-total-cart {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* ==== CHECKOUT ==== */
