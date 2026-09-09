@@ -26,14 +26,14 @@
             <h3>Summary</h3>
             <div class="summary-categories-checkout">
               <h4>item</h4>
-              <h4>quantity</h4>
-              <h4>price</h4>
+              <h4 class="text-align-center">quantity</h4>
+              <h4 class="text-align-right">price</h4>
             </div>
             <div class="summary-items-checkout">
               <div class="summary-item-checkout">
                 <h5>Item name here</h5>
-                <p>qty</p>
-                <p>1234:-</p>
+                <p class="text-align-center">qty</p>
+                <p class="text-align-right">1234:-</p>
               </div>
             </div>
             <div id="summary-totals-checkout">
@@ -47,7 +47,7 @@
               </div>
               <div id="summary-totals-total-checkout">
                 <h5>Total:</h5>
-                <p></p>
+                <p>9999:-</p>
               </div>
             </div>
           </figure>
@@ -124,58 +124,90 @@
 
               <div class="payment-option-container">
                 <div class="payment-option-div">
-                  <input
-                    type="radio"
-                    id="debit-credit-card"
-                    name="payment-option"
-                    value="debit/credit card"
-                  />
-                  <label for="debit-credit-card">Debit/Credit Card</label>
-                  <img
-                    src="../images/mastercard-logo.webp"
-                    alt="mastercard logo"
-                  />
-                  <img
-                    src="../images/amex-logo.png"
-                    alt="american express logo"
-                  />
-                  <img src="../images/visa-logo.webp" alt="visa logo" />
-                  <img src="../images/unionpay-logo.webp" />
+                  <div class="payment-input-div">
+                    <input
+                      type="radio"
+                      id="debit-credit-card"
+                      name="payment-option"
+                      value="debit/credit card"
+                    />
+                    <label for="debit-credit-card">Debit/Credit Card</label>
+                  </div>
+                  <div class="payment-options-div">
+                    <div class="payment-option-img-container">
+                      <img
+                        src="../images/mastercard-logo.webp"
+                        alt="mastercard logo"
+                      />
+                    </div>
+                    <div
+                      class="payment-option-img-container payment-option-amex"
+                    >
+                      <img
+                        src="../images/amex-logo.png"
+                        alt="american express logo"
+                      />
+                    </div>
+                    <div class="payment-option-img-container">
+                      <img src="../images/visa-logo.webp" alt="visa logo" />
+                    </div>
+                    <div class="payment-option-img-container">
+                      <img
+                        src="../images/unionpay-logo.webp"
+                        alt="union-pay logo"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div class="payment-option-div">
-                  <input
-                    type="radio"
-                    id="klarna"
-                    name="payment-option"
-                    value="klarna"
-                  />
-                  <label for="klarna">Klarna</label>
-                  <img src="../images/klarna-logo.webp" alt="klarna logo" />
+                  <div class="payment-input-div">
+                    <input
+                      type="radio"
+                      id="klarna"
+                      name="payment-option"
+                      value="klarna"
+                    />
+                    <label for="klarna">Klarna</label>
+                  </div>
+                  <div
+                    class="payment-option-img-container payment-option-klarna"
+                  >
+                    <img src="../images/klarna-logo.webp" alt="klarna logo" />
+                  </div>
                 </div>
                 <div class="payment-option-div">
-                  <input
-                    type="radio"
-                    id="swish"
-                    name="payment-option"
-                    value="swish"
-                  />
-                  <label for="swish">Swish</label>
-                  <img src="../images/swish-logo.png" alt="swish logo" />
+                  <div class="payment-input-div">
+                    <input
+                      type="radio"
+                      id="swish"
+                      name="payment-option"
+                      value="swish"
+                    />
+                    <label for="swish">Swish</label>
+                  </div>
+                  <div class="payment-option-img-container">
+                    <img src="../images/swish-logo.png" alt="swish logo" />
+                  </div>
                 </div>
                 <div id="payment-option-bottom" class="payment-option-div">
-                  <input
-                    type="radio"
-                    id="paypal"
-                    name="payment-option"
-                    value="paypal"
-                  />
-                  <label for="paypal">PayPal</label>
-                  <img src="../images/paypal-logo.png" alt="paypal logo" />
+                  <div class="payment-input-div">
+                    <input
+                      type="radio"
+                      id="paypal"
+                      name="payment-option"
+                      value="paypal"
+                    />
+                    <label for="paypal">PayPal</label>
+                  </div>
+                  <div class="payment-option-img-container">
+                    <img src="../images/paypal-logo.png" alt="paypal logo" />
+                  </div>
                 </div>
               </div>
             </fieldset>
             <label for="checkout-submit" class="hidden">submit-button</label>
             <input
+              class="uppercase"
               type="submit"
               id="checkout-submit"
               value="complete purchase"

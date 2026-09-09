@@ -2,15 +2,23 @@
   /* ==== COLORS ==== */
 
   --color-primary: #6b00ee;
+  --color-primary-hover: #5300ba;
   --color-share-button: #0add46;
+  --color-share-button-hover: #09ba3c;
   --color-clear-cart-button: #ff6040;
+  --color-clear-cart-button-hover: #db5337;
   --color-stars-filled: #e3e302;
+  --color-add-button: #8cffad;
+  --color-add-button-hover: #78db95;
+  --color-subtract-button: #ff6040;
+  --color-subtract-button-hover: #db5337;
 
   --color-text-primary: #000000;
   --color-text-secondary: #ffffff;
 
   --color-background-primary: #ffffff;
   --color-background-secondary: #646464;
+  --color-background-tertiary: #eef2f2;
 
   /* ==== FONTS ==== */
 

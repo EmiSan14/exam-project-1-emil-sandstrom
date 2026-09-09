@@ -251,7 +251,8 @@ footer li a:hover {
 .checkout-form-payment-option,
 .success-success-message h3,
 .summary-details-success h4,
-.summary-table-success {
+.summary-table-success,
+#password-register-page-repeat {
   margin-bottom: var(--medium-distance-mobile);
 }
 
@@ -304,8 +305,15 @@ footer li a:hover {
 
 .cart-summary,
 .summary-table-checkout,
+.checkout-form-delivery-address input,
 .payment-option-div,
-.success-summary {
+.success-summary,
+#email-login-page,
+#password-login-page,
+#username-register-page,
+#email-register-page,
+#password-register-page,
+#password-register-page-repeat {
   padding: var(--small-distance-mobile);
 }
 
@@ -330,13 +338,15 @@ button,
   padding: 1px;
 }
 
+.carousel-directional-buttons,
 .specific-product-prices,
 .qty-picker-spec-product,
 .cart-product-prices {
   gap: var(--small-distance-mobile);
 }
 
-.qty-picker-cart {
+.qty-picker-cart,
+.summary-item-success-details {
   gap: 5px;
 }
 
@@ -351,16 +361,27 @@ button,
 
 .cart-summary,
 #discount-code-input,
+.payment-option-container,
 .summary-table-checkout,
 .success-summary,
 .checkout-form-delivery-address input,
 .login-page,
-.register-page {
+.register-page,
+#email-login-page,
+#password-login-page,
+#username-register-page,
+#email-register-page,
+#password-register-page,
+#password-register-page-repeat {
   border: solid 2px var(--color-primary);
 }
 
-.payment-option-container {
-  border: solid 2px var(--color-primary);
+#debit-credit-card {
+  border-color: var(--color-primary);
+}
+
+.payment-option-img-container {
+  border: solid 1px #cad0d8;
 }
 
 .product-container-start,
@@ -384,6 +405,8 @@ button,
 button,
 fieldset,
 #discount-code-apply-button,
+.payment-option-amex,
+.payment-option-klarna,
 #payment-option-bottom,
 #checkout-submit,
 #login-submit,
@@ -391,18 +414,27 @@ fieldset,
   border: none;
 }
 
+.carousel-directional-buttons button,
 .qty-picker-spec-product button,
-.qty-picker-cart button {
+.qty-picker-cart button,
+.social-media-success-icon img {
   border-radius: 50%;
 }
 
 button,
 fieldset,
 #discount-code-apply-button,
+.checkout-form-delivery-address input,
 #payment-option-bottom,
 #checkout-submit,
 #login-submit,
-#register-submit {
+#register-submit,
+#email-login-page,
+#password-login-page,
+#username-register-page,
+#email-register-page,
+#password-register-page,
+#password-register-page-repeat {
   border-radius: 4px;
 }
 
@@ -436,7 +468,9 @@ h1,
 .items-success h4,
 .success-item-header,
 .success-item-qty,
-.social-media-success h3 {
+.social-media-success h3,
+.login-page h1,
+.register-page h1 {
   font-family: var(--font-headers), sans-serif;
 }
 
@@ -606,7 +640,19 @@ h1,
 .summary-item-cart h5,
 .summary-totals-item-cart h5,
 .summary-totals-shipping-cart h5,
-.summary-totals-total-cart h5 {
+.summary-totals-total-cart h5,
+.summary-item-checkout h5,
+.summary-totals-item-checkout h5,
+.summary-totals-shipping-checkout h5,
+#summary-totals-total-checkout h5,
+.success-success-message h3,
+.summary-details-success h4,
+.summary-detail-success h5,
+.items-success h4,
+.success-item-header,
+.social-media-success h3,
+.login-page h1,
+.register-page h1 {
   font-weight: 400;
 }
 
@@ -622,11 +668,13 @@ h1,
 
 /* **KEEP** FONT: --font-text */
 
-.summary-categories-cart h4 {
+.summary-categories-cart h4,
+.summary-categories-checkout h4 {
   font-weight: 500;
 }
 
-.review-text {
+.review-text,
+.summary-detail-success p {
   font-weight: 300;
 }
 
@@ -644,12 +692,61 @@ h1,
   background-color: var(--color-primary);
 }
 
+.carousel button:hover,
+.product-start-cta:hover,
+.add-to-cart-button:hover,
+#discount-code-apply-button:hover,
+.summary-table-cart button:hover,
+#checkout-submit:hover,
+#continue-shopping-button:hover,
+#login-submit:hover,
+#register-submit:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.product-container-start,
+.cart-product,
+.checkout-form-delivery-address input,
+.summary-item-success,
+#email-login-page,
+#password-login-page,
+#username-register-page,
+#email-register-page,
+#password-register-page,
+#password-register-page-repeat {
+  background-color: var(--color-background-tertiary);
+}
+
 .share-button {
   background-color: var(--color-share-button);
 }
 
+.share-button:hover {
+  background-color: var(--color-share-button-hover);
+}
+
 .clear-cart-button {
   background-color: var(--color-clear-cart-button);
+}
+
+.clear-cart-button:hover {
+  background-color: var(--color-clear-cart-button-hover);
+}
+
+.add-button {
+  background-color: var(--color-add-button);
+}
+
+.add-button:hover {
+  background-color: var(--color-add-button-hover);
+}
+
+.subtract-button {
+  background-color: var(--color-subtract-button);
+}
+
+.subtract-button:hover {
+  background-color: var(--color-subtract-button-hover);
 }
 
 .product-grid-section h2,
@@ -681,20 +778,50 @@ h1,
   color: var(--color-stars-filled);
 }
 
-/* ==== HEIGHT ==== */
+.checkout-form-payment-option input,
+#checkbox-tos-and-pp,
+#checkbox-offers-and-news {
+  accent-color: var(--color-primary);
+}
+
+/* ==== HEIGHT/WIDTH ==== */
 
 .cart-product img {
   min-height: 104px;
 }
 
-/* ==== WIDTH ==== */
+.payment-option-img-container {
+  height: 23px;
+  width: 32px;
+}
 
-.cart-product {
+.payment-option-img-container img,
+.social-media-success img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.payment-option-amex img,
+.payment-option-klarna img {
+  object-fit: fill;
+}
+
+.cart-product,
+.checkout-form-delivery-address input,
+#checkout-submit,
+#continue-shopping-button,
+.register-checkbox-div {
   width: 100%;
 }
 
 .clear-cart-button {
   width: 90%;
+}
+
+#login-submit,
+#register-submit {
+  width: 70%;
 }
 
 #discount-code-input {
@@ -711,6 +838,10 @@ h1,
 
 .share-button {
   width: 35%;
+}
+
+.social-media-success-icon {
+  width: 10%;
 }
 
 .qty-picker-spec-product button {
@@ -756,7 +887,6 @@ h1,
 
 .product-container-start {
   width: 48%;
-  background-color: #ebebeb;
 }
 
 .product-start-numbers-container {
@@ -769,10 +899,31 @@ h1,
 }
 
 .product-start-cta {
-  width: 94%;
+  width: 93%;
 }
 
 /* ==== SPEC PRODUCT PAGE ==== */
+
+.carousel-item {
+  display: grid;
+  grid-template-columns: 5% 45% 45% 5%;
+  grid-template-rows: 20% 50% 30%;
+}
+
+.carousel-item img {
+  grid-area: 1 / 1 / 4 / 5;
+}
+
+.carousel-item-information-window {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.carousel-directional-buttons {
+  grid-area: 3 / 2 / 4 / 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .specific-product-stars {
   display: flex;
@@ -813,6 +964,10 @@ h1,
   display: flex;
 }
 
+.cart-stars p {
+  vertical-align: middle;
+}
+
 .qty-picker-cart {
   display: flex;
 }
@@ -846,11 +1001,41 @@ h1,
 
 /* ==== CHECKOUT ==== */
 
-.payment-option-div img {
-  width: 10%;
+.summary-categories-checkout,
+.summary-item-checkout {
+  display: grid;
+  grid-template-columns: 60% 20% 20%;
+}
+
+.summary-totals-item-checkout,
+.summary-totals-shipping-checkout,
+#summary-totals-total-checkout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment-input-div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.payment-option-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment-options-div {
+  display: flex;
+  gap: 3px;
 }
 
 /* ==== SUCCESS ==== */
+
+.summary-detail-success {
+  display: flex;
+  justify-content: space-between;
+}
 
 .summary-item-success {
   display: flex;
@@ -858,6 +1043,16 @@ h1,
 
 .summary-item-success img {
   width: 45%;
+}
+
+.summary-item-success-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-media-success-icons {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* ==== LOGIN/REGISTER PAGE ==== */
@@ -869,6 +1064,18 @@ h1,
 #password-register-page,
 #password-register-page-repeat {
   width: 100%;
+}
+
+.form-login,
+.form-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-checkbox-div {
+  display: flex;
+  gap: 10px;
 }
 
 /* ============ TEMPORARY. DELETE LATER. ============ */
