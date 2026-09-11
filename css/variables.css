@@ -34,4 +34,8 @@
   --medium-distance-mobile: 20px;
   --small-distance-mobile: 10px;
   --tiny-distance-mobile: 5px;
+
+  --big-distance-tablet: 64px;
+  --medium-distance-tablet: 40px;
+  --small-distance-tablet: 20px;
 }
