@@ -25,7 +25,28 @@
               ><span class="color-primary">W</span>AKARANAI</a
             >
           </div>
-          <div>
+          <div id="header-upper-search">
+            <label for="searchbar-tablet-and-desktop" class="hidden"> </label>
+            <i
+              class="fa-solid fa-magnifying-glass color-primary"
+              id="search-icon-searchbar"
+            ></i>
+            <input
+              type="search"
+              name="searchbar-tablet-and-desktop"
+              id="searchbar-tablet-and-desktop"
+              placeholder="Search"
+            />
+          </div>
+          <div id="header-upper-right-tablet-and-desktop">
+            <a href="account/login.html"
+              ><i class="fa-solid fa-circle-user"></i
+            ></a>
+            <a href="cart/index.html"
+              ><i class="fa-solid fa-cart-shopping"></i
+            ></a>
+          </div>
+          <div id="header-upper-right-mobile">
             <i class="fa-solid fa-magnifying-glass color-primary"></i>
             <i class="fa-solid fa-bars color-primary"></i>
           </div>
@@ -325,10 +346,10 @@
     </main>
 
     <footer>
-      <div class="footer-header">
+      <div class="footer-header" id="general-footer">
         <h3>General</h3>
       </div>
-      <div class="footer-links">
+      <div class="footer-links" id="footer-links-1">
         <ul class="links-general">
           <li class="footer-grid-item-one"><a href="">About us</a></li>
           <li class="footer-grid-item-two"><a href="">Contact us</a></li>
@@ -340,10 +361,10 @@
           <li class="footer-grid-item-six"><a href="">Careers</a></li>
         </ul>
       </div>
-      <div class="footer-header">
+      <div class="footer-header" id="customers-footer">
         <h3>For customers</h3>
       </div>
-      <div class="footer-links">
+      <div class="footer-links" id="footer-links-2">
         <ul class="links-for-customers">
           <li class="footer-grid-item-one"><a href="">Accessibility</a></li>
           <li class="footer-grid-item-two">
@@ -355,18 +376,20 @@
           <li class="footer-grid-item-six"><a href="">Returns</a></li>
         </ul>
       </div>
-      <div class="footer-header">
+      <div class="footer-header" id="social-media-footer-upper">
         <h3>Social media</h3>
       </div>
       <div class="footer-links social-media-footer">
-        <a href=""><img src="images/x-logo.jpg" alt="x/twitter icon" /></a>
-        <a href=""
+        <a href="" id="footer-x"
+          ><img src="images/x-logo.jpg" alt="x/twitter icon"
+        /></a>
+        <a href="" id="footer-instagram"
           ><img src="images/instagram-logo.webp" alt="instagram icon"
         /></a>
-        <a href=""
+        <a href="" id="footer-facebook"
           ><img src="images/facebook-logo.webp" alt="facebook icon"
         /></a>
-        <a href=""
+        <a href="" id="footer-tiktok"
           ><img src="images/tiktok-logo-footer.png" alt="tiktok icon"
         /></a>
       </div>
