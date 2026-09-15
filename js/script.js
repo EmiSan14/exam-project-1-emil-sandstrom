@@ -1,8 +1,9 @@
 const apiEndPoint = "https://v2.api.noroff.dev/online-shop";
 const accessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRW1pU2FuMTQiLCJlbWFpbCI6ImVtaXNhbjA2OTUyQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzg3MDYxMDg1fQ.I-xBOnR8r2dQa2fEbkPyHiV9g9zl8bPOekJ2aErFIYM";
+const apiKey = "${{ secrets.APIKEY }}";
 
-async function getApi() {
+export async function getApi() {
   const options = {
     method: "GET",
     headers: {
@@ -18,5 +19,3 @@ async function getApi() {
     console.log(error);
   }
 }
-
-getApi();

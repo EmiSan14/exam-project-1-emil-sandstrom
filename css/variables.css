@@ -38,4 +38,9 @@
   --big-distance-tablet: 64px;
   --medium-distance-tablet: 40px;
   --small-distance-tablet: 20px;
+
+  --max-distance-desktop: 256px;
+  --big-distance-desktop: 128px;
+  --medium-distance-desktop: 64px;
+  --small-distance-desktop: 40px;
 }
