@@ -15,6 +15,7 @@ export async function getApi() {
     const response = await fetch(apiEndPoint, options);
     const result = await response.json();
     console.log(result);
+    return result;
   } catch (error) {
     console.log(error);
   }
