@@ -77,8 +77,11 @@
       <h1 class="hidden">start page</h1>
       <section class="carousel">
         <h2 class="hidden">product carousel</h2>
-        <ul class="carousel-container">
-          <li class="carousel-item" id="carousel-item-main">
+        <ul class="carousel-container" data-state="state-start">
+          <li
+            class="carousel-item carousel-item-middle"
+            id="carousel-item-main"
+          >
             <img
               src="images/alpcem-portrait-4563909_1280-compressed.jpg"
               alt="woman on tree branch in stylish clothing"
@@ -89,42 +92,52 @@
                   <span>Shop in comfort.</span><span>live in style.</span>
                 </h3>
               </div>
-              <button class="carousel-cta">products</button>
-            </div>
-            <div class="carousel-directional-buttons">
-              <button class="directional-button-left">&lt;</button>
-              <button class="directional-button-right">></button>
+              <a class="carousel-cta">products</a>
             </div>
           </li>
-          <li class="carousel-item" id="carousel-item-shampoo">
-            <img src="images/11-shampoo-delete-later.jpg" alt="" />
+          <li
+            class="carousel-item carousel-item-right"
+            id="carousel-item-shampoo"
+          >
+            <img src="" alt="" />
             <div class="carousel-item-information-window-alt">
               <h3 class="text-align-center">Organic Shampoo</h3>
               <p class="text-align-center">104.29:-</p>
-              <button class="carousel-cta">view</button>
+              <a class="carousel-cta" data-buttonid="right">view</a>
             </div>
           </li>
-          <li class="carousel-item" id="carousel-item-shoes">
-            <img src="images/7-shoes-white-delete-later.jpg" alt="" />
+          <li
+            class="carousel-item carousel-item-shoes"
+            id="carousel-item-shoes"
+          >
+            <img src="" alt="" />
             <div class="carousel-item-information-window-alt">
               <h3 class="text-align-center">White Sneakers</h3>
               <p class="text-align-center">659.99:-</p>
-              <button class="carousel-cta">view</button>
+              <a class="carousel-cta" data-buttonid="left">view</a>
             </div>
           </li>
         </ul>
+        <div class="carousel-directional-buttons">
+          <button class="directional-button-left">&lt;</button>
+          <button class="directional-button-right">></button>
+        </div>
       </section>
       <section class="product-grid-section">
         <h2>products</h2>
         <div class="product-grid">
-          <figure class="product-container-start" id="product-1">
-            <a href=""
+          <figure
+            class="product-container-start"
+            id="product-1"
+            data-buttonid="0"
+          >
+            <a class="product-image-anchor" href=""
               ><img src="images/alpcem-portrait-4563909_1280.jpg" alt=""
             /></a>
             <h3 class="product-start-name">B</h3>
             <div class="product-start-numbers-container">
-              <p class="product-start-number-standard">8999.99:-</p>
-              <p class="product-start-number-discounted">7999.99:-</p>
+              <p class="product-start-number-standard">N/A</p>
+              <p class="product-start-number-discounted">N/A</p>
             </div>
             <div class="product-start-number-stars">
               <p>&#9733;</p>
@@ -133,16 +146,20 @@
               <p>&#9733;</p>
               <p>&#9733;</p>
             </div>
-            <button class="product-start-cta">view</button>
+            <a class="product-start-cta">view</a>
           </figure>
-          <figure class="product-container-start" id="product-2">
-            <a href=""
+          <figure
+            class="product-container-start"
+            id="product-2"
+            data-buttonid="0"
+          >
+            <a href="" class="product-image-anchor"
               ><img src="images/alpcem-portrait-4563909_1280.jpg" alt=""
             /></a>
-            <h3 class="product-start-name">Black boots</h3>
+            <h3 class="product-start-name">placeholder</h3>
             <div class="product-start-numbers-container">
-              <p class="product-start-number-standard">899.99:-</p>
-              <p class="product-start-number-discounted">899.99:-</p>
+              <p class="product-start-number-standard">N/A</p>
+              <p class="product-start-number-discounted">N/A</p>
             </div>
             <div class="product-start-number-stars">
               <p>&#9733;</p>
@@ -151,16 +168,20 @@
               <p>&#9733;</p>
               <p>&#9733;</p>
             </div>
-            <button class="product-start-cta">view</button>
+            <a class="product-start-cta">view</a>
           </figure>
-          <figure class="product-container-start" id="product-3">
-            <a href=""
+          <figure
+            class="product-container-start"
+            id="product-3"
+            data-buttonid="0"
+          >
+            <a href="" class="product-image-anchor"
               ><img src="images/alpcem-portrait-4563909_1280.jpg" alt=""
             /></a>
-            <h3 class="product-start-name">Black boots</h3>
+            <h3 class="product-start-name">placeholder</h3>
             <div class="product-start-numbers-container">
-              <p class="product-start-number-standard">8999.99:-</p>
-              <p class="product-start-number-discounted">7999.99:-</p>
+              <p class="product-start-number-standard">N/A</p>
+              <p class="product-start-number-discounted">N/A</p>
             </div>
             <div class="product-start-number-stars">
               <p>&#9733;</p>
@@ -169,16 +190,20 @@
               <p>&#9733;</p>
               <p>&#9733;</p>
             </div>
-            <button class="product-start-cta">view</button>
+            <a class="product-start-cta">view</a>
           </figure>
-          <figure class="product-container-start" id="product-4">
-            <a href=""
+          <figure
+            class="product-container-start"
+            id="product-4"
+            data-buttonid="0"
+          >
+            <a href="" class="product-image-anchor"
               ><img src="images/alpcem-portrait-4563909_1280.jpg" alt=""
             /></a>
-            <h3 class="product-start-name">Black boots</h3>
+            <h3 class="product-start-name">placeholder</h3>
             <div class="product-start-numbers-container">
-              <p class="product-start-number-standard">8999.99:-</p>
-              <p class="product-start-number-discounted">7999.99:-</p>
+              <p class="product-start-number-standard">N/A</p>
+              <p class="product-start-number-discounted">N/A</p>
             </div>
             <div class="product-start-number-stars">
               <p>&#9733;</p>
@@ -187,16 +212,20 @@
               <p>&#9733;</p>
               <p>&#9733;</p>
             </div>
-            <button class="product-start-cta">view</button>
+            <a class="product-start-cta">view</a>
           </figure>
-          <figure class="product-container-start" id="product-5">
-            <a href=""
+          <figure
+            class="product-container-start"
+            id="product-5"
+            data-buttonid="0"
+          >
+            <a href="" class="product-image-anchor"
               ><img src="images/alpcem-portrait-4563909_1280.jpg" alt=""
             /></a>
-            <h3 class="product-start-name">Black boots</h3>
+            <h3 class="product-start-name">placeholder</h3>
             <div class="product-start-numbers-container">
-              <p class="product-start-number-standard">8999.99:-</p>
-              <p class="product-start-number-discounted">7999.99:-</p>
+              <p class="product-start-number-standard">N/A</p>
+              <p class="product-start-number-discounted">N/A</p>
             </div>
             <div class="product-start-number-stars">
               <p>&#9733;</p>
@@ -205,16 +234,20 @@
               <p>&#9733;</p>
               <p>&#9733;</p>
             </div>
-            <button class="product-start-cta">view</button>
+            <a class="product-start-cta">view</a>
           </figure>
-          <figure class="product-container-start" id="product-6">
-            <a href=""
+          <figure
+            class="product-container-start"
+            id="product-6"
+            data-buttonid="0"
+          >
+            <a href="" class="product-image-anchor"
               ><img src="images/alpcem-portrait-4563909_1280.jpg" alt=""
             /></a>
-            <h3 class="product-start-name">Black boots</h3>
+            <h3 class="product-start-name">placeholder</h3>
             <div class="product-start-numbers-container">
-              <p class="product-start-number-standard">8999.99:-</p>
-              <p class="product-start-number-discounted">7999.99:-</p>
+              <p class="product-start-number-standard">N/A</p>
+              <p class="product-start-number-discounted">N/A</p>
             </div>
             <div class="product-start-number-stars">
               <p>&#9733;</p>
@@ -223,16 +256,20 @@
               <p>&#9733;</p>
               <p>&#9733;</p>
             </div>
-            <button class="product-start-cta">view</button>
+            <a class="product-start-cta">view</a>
           </figure>
-          <figure class="product-container-start" id="product-7">
-            <a href=""
+          <figure
+            class="product-container-start"
+            id="product-7"
+            data-buttonid="0"
+          >
+            <a href="" class="product-image-anchor"
               ><img src="images/alpcem-portrait-4563909_1280.jpg" alt=""
             /></a>
-            <h3 class="product-start-name">Black boots</h3>
+            <h3 class="product-start-name">placeholder</h3>
             <div class="product-start-numbers-container">
-              <p class="product-start-number-standard">8999.99:-</p>
-              <p class="product-start-number-discounted">7999.99:-</p>
+              <p class="product-start-number-standard">N/A</p>
+              <p class="product-start-number-discounted">N/A</p>
             </div>
             <div class="product-start-number-stars">
               <p>&#9733;</p>
@@ -241,16 +278,20 @@
               <p>&#9733;</p>
               <p>&#9733;</p>
             </div>
-            <button class="product-start-cta">view</button>
+            <a class="product-start-cta">view</a>
           </figure>
-          <figure class="product-container-start" id="product-8">
-            <a href=""
+          <figure
+            class="product-container-start"
+            id="product-8"
+            data-buttonid="0"
+          >
+            <a href="" class="product-image-anchor"
               ><img src="images/alpcem-portrait-4563909_1280.jpg" alt=""
             /></a>
-            <h3 class="product-start-name">Black boots</h3>
+            <h3 class="product-start-name">placeholder</h3>
             <div class="product-start-numbers-container">
-              <p class="product-start-number-standard">8999.99:-</p>
-              <p class="product-start-number-discounted">7999.99:-</p>
+              <p class="product-start-number-standard">N/A</p>
+              <p class="product-start-number-discounted">N/A</p>
             </div>
             <div class="product-start-number-stars">
               <p>&#9733;</p>
@@ -259,16 +300,20 @@
               <p>&#9733;</p>
               <p>&#9733;</p>
             </div>
-            <button class="product-start-cta">view</button>
+            <a class="product-start-cta">view</a>
           </figure>
-          <figure class="product-container-start" id="product-9">
-            <a href=""
+          <figure
+            class="product-container-start"
+            id="product-9"
+            data-buttonid="0"
+          >
+            <a href="" class="product-image-anchor"
               ><img src="images/alpcem-portrait-4563909_1280.jpg" alt=""
             /></a>
-            <h3 class="product-start-name">Black boots</h3>
+            <h3 class="product-start-name">placeholder</h3>
             <div class="product-start-numbers-container">
-              <p class="product-start-number-standard">8999.99:-</p>
-              <p class="product-start-number-discounted">7999.99:-</p>
+              <p class="product-start-number-standard">N/A</p>
+              <p class="product-start-number-discounted">N/A</p>
             </div>
             <div class="product-start-number-stars">
               <p>&#9733;</p>
@@ -277,16 +322,20 @@
               <p>&#9733;</p>
               <p>&#9733;</p>
             </div>
-            <button class="product-start-cta">view</button>
+            <a class="product-start-cta">view</a>
           </figure>
-          <figure class="product-container-start" id="product-10">
-            <a href=""
+          <figure
+            class="product-container-start"
+            id="product-10"
+            data-buttonid="0"
+          >
+            <a href="" class="product-image-anchor"
               ><img src="images/alpcem-portrait-4563909_1280.jpg" alt=""
             /></a>
-            <h3 class="product-start-name">Black boots</h3>
+            <h3 class="product-start-name">placeholder</h3>
             <div class="product-start-numbers-container">
-              <p class="product-start-number-standard">8999.99:-</p>
-              <p class="product-start-number-discounted">7999.99:-</p>
+              <p class="product-start-number-standard">N/A</p>
+              <p class="product-start-number-discounted">N/A</p>
             </div>
             <div class="product-start-number-stars">
               <p>&#9733;</p>
@@ -295,16 +344,20 @@
               <p>&#9733;</p>
               <p>&#9733;</p>
             </div>
-            <button class="product-start-cta">view</button>
+            <a class="product-start-cta">view</a>
           </figure>
-          <figure class="product-container-start" id="product-11">
-            <a href=""
+          <figure
+            class="product-container-start"
+            id="product-11"
+            data-buttonid="0"
+          >
+            <a href="" class="product-image-anchor"
               ><img src="images/alpcem-portrait-4563909_1280.jpg" alt=""
             /></a>
-            <h3 class="product-start-name">Black boots</h3>
+            <h3 class="product-start-name">placeholder</h3>
             <div class="product-start-numbers-container">
-              <p class="product-start-number-standard">8999.99:-</p>
-              <p class="product-start-number-discounted">7999.99:-</p>
+              <p class="product-start-number-standard">N/A</p>
+              <p class="product-start-number-discounted">N/A</p>
             </div>
             <div class="product-start-number-stars">
               <p>&#9733;</p>
@@ -313,16 +366,20 @@
               <p>&#9733;</p>
               <p>&#9733;</p>
             </div>
-            <button class="product-start-cta">view</button>
+            <a class="product-start-cta">view</a>
           </figure>
-          <figure class="product-container-start" id="product-12">
-            <a href=""
+          <figure
+            class="product-container-start"
+            id="product-12"
+            data-buttonid="0"
+          >
+            <a href="" class="product-image-anchor"
               ><img src="images/alpcem-portrait-4563909_1280.jpg" alt=""
             /></a>
-            <h3 class="product-start-name">Black boots</h3>
+            <h3 class="product-start-name">placeholder</h3>
             <div class="product-start-numbers-container">
-              <p class="product-start-number-standard">8999.99:-</p>
-              <p class="product-start-number-discounted">7999.99:-</p>
+              <p class="product-start-number-standard">N/A</p>
+              <p class="product-start-number-discounted">N/A</p>
             </div>
             <div class="product-start-number-stars">
               <p>&#9733;</p>
@@ -331,7 +388,7 @@
               <p>&#9733;</p>
               <p>&#9733;</p>
             </div>
-            <button class="product-start-cta">view</button>
+            <a class="product-start-cta">view</a>
           </figure>
         </div>
       </section>
