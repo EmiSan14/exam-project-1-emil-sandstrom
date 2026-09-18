@@ -1,6 +1,10 @@
 import * as importsStart from "./script.js";
 
-const apiItems = await importsStart.getApi();
+const apiEndPoint = "https://v2.api.noroff.dev/online-shop";
+
+const productGridSection = document.querySelector(".product-grid-section");
+
+const apiItems = await importsStart.getApi(apiEndPoint, productGridSection);
 console.log(apiItems.data);
 
 const carouselContainer = document.querySelector(".carousel-container");
@@ -206,22 +210,26 @@ export function addStars(ratingContainer, rating) {
   }
 }
 
-function addHREFtoAnchors(anchor) {
+export function addHREFtoAnchors(anchor) {
   anchor.setAttribute("href", "product/index.html");
 }
 
-function addID(linkingElement, specificAPIProduct) {
+export function addID(linkingElement, specificAPIProduct) {
   linkingElement.dataset.buttonid = specificAPIProduct.id;
 }
 
-function addProductIDToStorage(anchor) {
+export function addProductIDToStorage(anchor) {
   const idToAdd = anchor.dataset.buttonid;
+  sessionStorage.removeItem("clickedProductID");
   sessionStorage.setItem("clickedProductID", `${idToAdd}`);
 }
 
-function carouselCTAS() {
+export function carouselCTAS() {
   allCarouselAnchors.forEach((anchor) => {
     addHREFtoAnchors(anchor);
+    anchor.addEventListener("click", () => {
+      addProductIDToStorage(anchor);
+    });
     const mainCarouselCTA = document.querySelector(
       ".carousel-item-information-window",
     ).lastElementChild;
@@ -229,7 +237,7 @@ function carouselCTAS() {
   });
 }
 
-function productAnchors() {
+export function productAnchors() {
   allProductImageAnchors.forEach((anchor) => {
     addHREFtoAnchors(anchor);
     anchor.addEventListener("click", () => {
@@ -244,7 +252,7 @@ function productAnchors() {
   });
 }
 
-function carouselProduct(carouselID, specificAPIProduct) {
+export function carouselProduct(carouselID, specificAPIProduct) {
   const carouselImage = carouselID.firstElementChild;
   const carouselInformation = carouselID.lastElementChild;
   const carouselButton = carouselInformation.lastElementChild;
@@ -253,7 +261,7 @@ function carouselProduct(carouselID, specificAPIProduct) {
   addID(carouselButton, specificAPIProduct);
 }
 
-function productGridProduct(gridID, specificAPIProduct) {
+export function productGridProduct(gridID, specificAPIProduct) {
   const productImageAnchor = gridID.firstElementChild;
   const productImage = gridID.firstElementChild.firstElementChild;
   const productTitle = gridID.firstElementChild.nextElementSibling;

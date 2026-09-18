@@ -150,6 +150,10 @@ main {
   margin: 0 5px;
 }
 
+.tag {
+  margin-right: var(--small-distance-mobile);
+}
+
 .checkout-summary h3,
 .success-summary h3 {
   margin-bottom: 40px;
@@ -289,7 +293,9 @@ footer {
 }
 
 .product-start-cta,
-.carousel-cta {
+.carousel-cta,
+.add-to-cart-button,
+.share-button {
   padding: 6px;
 }
 
@@ -1282,6 +1288,66 @@ img,
 
 .register-checkbox-div {
   display: flex;
+}
+
+/* LOADING/ERROR HANDLING */
+
+.error-message-div {
+  background-color: var(--color-primary);
+  width: 80%;
+  height: 300px;
+  position: fixed;
+  bottom: 30%;
+  left: 10%;
+  z-index: 1;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.error-message-div p {
+  color: var(--color-text-secondary);
+  font-size: 24px;
+  font-family: var(--font-headers);
+  text-align: center;
+  position: absolute;
+  top: 30%;
+  width: 100%;
+}
+
+.error-message-button {
+  background-color: var(--color-text-secondary);
+  color: var(--color-primary);
+  border-radius: 4px;
+  width: 30%;
+  padding: 8px;
+  position: absolute;
+  bottom: 20%;
+  left: 35%;
+}
+
+.error-message-button:hover {
+  background-color: #cad0d8;
+}
+
+.spinner {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spinning 1s linear infinite;
+  border: 10px solid var(--color-text);
+  border-top: solid 10px var(--color-primary);
+  position: fixed;
+  left: 40%;
+  top: 50%;
+}
+
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* ============ TEMPORARY. DELETE LATER. ============ */
