@@ -97,3 +97,42 @@ export function errorMessageDismiss() {
     errorMessageDiv.classList.add("hidden");
   });
 }
+
+export function fetchCart() {
+  const cartInStorage = localStorage.getItem("cart");
+  const usableCart = JSON.parse(cartInStorage);
+  console.log("cart:", usableCart);
+  if (!usableCart) {
+    return;
+  } else {
+    usableCart.forEach((item) => {
+      cart.push(item);
+    });
+  }
+}
+
+/* For spec product-page specifically */
+
+export function quantityButtonSubtract(qtyPickerContainer) {
+  const qtyPickerButtonSubtract = qtyPickerContainer.firstElementChild;
+  qtyPickerButtonSubtract.addEventListener("click", () => {
+    const quantity = qtyPickerButtonSubtract.nextElementSibling;
+    if (quantity >= 1) {
+      quantity -= 1;
+    } else {
+      return;
+    }
+  });
+}
+
+export function quantityButtonAdd(qtyPickerContainer) {
+  const qtyPickerButtonAdd = qtyPickerContainer.lastElementChild;
+  qtyPickerButtonAdd.addEventListener("click", () => {
+    const quantity = qtyPickerButtonAdd.previousElementSibling;
+    if (quantity < 3) {
+      quantity += 1;
+    } else {
+      return;
+    }
+  });
+}

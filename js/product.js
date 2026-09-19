@@ -152,7 +152,7 @@ function addToCartListener() {
   });
 }
 
-function fetchCart() {
+export function fetchCart() {
   const cartInStorage = localStorage.getItem("cart");
   const usableCart = JSON.parse(cartInStorage);
   console.log("cart:", usableCart);
