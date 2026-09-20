@@ -15,6 +15,11 @@
   </head>
   <body class="background-dark">
     <main class="main-register">
+      <div class="spinner hidden"></div>
+      <div class="error-message-div hidden"></div>
+      <div class="register-toast-div">
+        <p class="text-align-center">Account successfully registered!</p>
+      </div>
       <section class="register-page background-light">
         <h1 class="text-align-center">Register</h1>
         <p class="text-align-center">
@@ -22,20 +27,13 @@
           upcoming collections and deals
         </p>
         <form class="form-register">
-          <label for="username-register-page" class="hidden">username</label>
-          <input
-            type="text"
-            name="username-register-page"
-            id="username-register-page"
-            placeholder="Username"
-            required
-          />
           <label for="email-register-page" class="hidden">e-mail</label>
           <input
             type="email"
             name="email-register-page"
             id="email-register-page"
             placeholder="E-Mail"
+            title="Valid @stud.noroff.no email-address"
             required
           />
           <label for="password-register-page" class="hidden">password</label>
@@ -44,6 +42,7 @@
             name="password-register-page"
             id="password-register-page"
             placeholder="Password"
+            title="Valid password requires at least 1 uppercase letter, 1 lowercase letter, and 1 number"
             required
           />
           <label for="password-register-page-repeat" class="hidden"
@@ -54,6 +53,7 @@
             name="password-register-page-repeat"
             id="password-register-page-repeat"
             placeholder="Repeat Password"
+            title="Repeat password above"
             required
           />
           <div class="register-checkbox-div">

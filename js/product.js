@@ -145,10 +145,15 @@ function populateSpecificProductPage(product) {
 
 function addToCartListener() {
   const addToCartButton = document.querySelector(".add-to-cart-button");
+  const receivedToken = sessionStorage.getItem("apiToken");
   addToCartButton.addEventListener("click", () => {
-    cart.push(apiItem);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    console.log(localStorage.getItem("cart"));
+    if (!receivedToken) {
+      // ADD MESSAGE ON SCREEN
+    } else {
+      cart.push(apiItem);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      console.log(localStorage.getItem("cart"));
+    }
   });
 }
 

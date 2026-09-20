@@ -15,6 +15,11 @@
   </head>
   <body class="background-dark">
     <main class="main-login">
+      <div class="spinner hidden"></div>
+      <div class="error-message-div hidden"></div>
+      <div class="login-toast-div">
+        <p class="text-align-center">Login successful!</p>
+      </div>
       <section class="login-page background-light">
         <h1 class="text-align-center">Login</h1>
         <p class="text-align-center">
@@ -27,6 +32,7 @@
             name="email-login-page"
             id="email-login-page"
             placeholder="E-Mail"
+            title="A registered @stud.noroff.no email-address"
             required
           />
           <label for="password-login-page" class="hidden">e-mail</label>

@@ -1290,6 +1290,25 @@ img,
   display: flex;
 }
 
+.login-toast-div,
+.register-toast-div {
+  background-color: var(--color-primary);
+  width: 50%;
+  position: fixed;
+  left: 25%;
+  top: 10%;
+  padding: 20px;
+  border-radius: 8px;
+  border: solid 2px var(--color-text-secondary);
+}
+
+.login-toast-div p,
+.register-toast-div p {
+  color: var(--color-text-secondary);
+  font-family: var(--font-headers);
+  font-size: 20px;
+}
+
 /* LOADING/ERROR HANDLING */
 
 .error-message-div {

@@ -1,5 +1,8 @@
 "use strict";
 
+import * as importsFunctions1 from "./functions-1.js";
+import * as importsScript from "./script.js";
+
 let cart = [];
 
 const checkoutPageSummaryItems = document.querySelector(
@@ -14,7 +17,9 @@ const checkoutPageSummaryShipping = document.querySelector(
 const checkoutPageSummaryTotal = document.querySelector(
   ".summary-totals-total-checkout",
 );
+
 const checkoutSubmitButton = document.getElementById("checkout-submit");
+console.log(checkoutSubmitButton);
 
 function populateCheckoutSummary(cartFromStorage) {
   let totalPrice = 0;
@@ -58,6 +63,29 @@ function populateCheckoutSummary(cartFromStorage) {
   finalTotal.textContent = `${totalPrice + shippingCost}:-`;
 }
 
+const firstNameInput = document.getElementById("first-name-checkout");
+const lastNameInput = document.getElementById("last-name-checkout");
+const addressInput = document.getElementById("address-checkout");
+const townCityInput = document.getElementById("town-city-checkout");
+const provinceInput = document.getElementById("province-checkout");
+const houseUnitAptNrInput = document.getElementById(
+  "house-unit-apt-nr-checkout",
+);
+const postalCodeInput = document.getElementById("postal-code-checkout");
+
+function addFormValuesToStorage() {
+  let formValues = {
+    firstName: firstNameInput.value,
+    lastName: lastNameInput.value,
+    address: addressInput.value,
+    townCity: townCityInput.value,
+    province: provinceInput.value,
+    houseUnitAptNr: houseUnitAptNrInput,
+  };
+  formValuesJSON = JSON.stringify(formValues);
+  sessionStorage.setItem("purchaseInfo", formValuesJSON);
+}
+
 checkoutSubmitButton.addEventListener("click", () => {
   checkoutSubmitButton.preventDefault();
 });
@@ -69,3 +97,4 @@ function checkoutOnStart() {
 // DON*T FORGET TO POTENTIALLY REMOVE THE REQUIRED
 // ATTRIBUTE OF SOME OF THE FORM-INPUTS
 // FIX PATTERNS
+// CART-FETCHER NEEDED
