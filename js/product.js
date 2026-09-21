@@ -150,7 +150,9 @@ function addToCartListener() {
     if (!receivedToken) {
       // ADD MESSAGE ON SCREEN
     } else {
-      cart.push(apiItem);
+      const subtractButton = document.querySelector(".subtract-button");
+      const quantityNumber = subtractButton.nextElementSibling.textContent;
+      cart.push({ item: apiItem, quantity: quantityNumber });
       localStorage.setItem("cart", JSON.stringify(cart));
       console.log(localStorage.getItem("cart"));
     }

@@ -323,6 +323,12 @@ footer {
   padding: 10px;
 }
 
+.summary-items-cart {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .product-start-numbers-container,
 .carousel-directional-buttons,
 .specific-product-prices,

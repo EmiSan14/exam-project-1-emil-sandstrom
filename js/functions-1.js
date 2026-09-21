@@ -1,3 +1,5 @@
+let cart = [];
+
 export function checkPrices(standardPrice, discountedPrice) {
   if (standardPrice.textContent === discountedPrice.textContent) {
     standardPrice.remove();
@@ -108,6 +110,7 @@ export function fetchCart() {
     usableCart.forEach((item) => {
       cart.push(item);
     });
+    return cart;
   }
 }
 
