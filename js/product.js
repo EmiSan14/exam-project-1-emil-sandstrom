@@ -14,8 +14,11 @@ const apiItemFull = await importsScript.getSpecificApiProduct(
 );
 const apiItem = apiItemFull.data;
 
+const errorMessageDiv = document.querySelector(".error-message-div");
+const errorMessageText = errorMessageDiv.firstElementChild;
+const errorMessageButton = errorMessageDiv.lastElementChild;
+
 function addImage(apiProduct) {
-  console.log(apiProduct);
   const productImage = document.createElement("img");
   productImage.src = apiProduct.image.url;
   productImage.alt = apiProduct.description;
@@ -143,18 +146,100 @@ function populateSpecificProductPage(product) {
   specificProduct.appendChild(productReviewsAndTags);
 }
 
+function addIDsToSeparateCart(cart) {
+  const cartOfIDs = [];
+  cart.forEach((item) => {
+    cartOfIDs.push(item.item.id);
+  });
+  const cartOfSingleIDOccurrence = [];
+  cartOfIDs.forEach((ID) => {
+    if (cartOfSingleIDOccurrence.includes(ID)) {
+      return;
+    } else {
+      cartOfSingleIDOccurrence.push(ID);
+    }
+  });
+  console.log(cartOfSingleIDOccurrence);
+  localStorage.setItem("cartOfOnlyIDs", cartOfSingleIDOccurrence);
+}
+
 function addToCartListener() {
   const addToCartButton = document.querySelector(".add-to-cart-button");
   const receivedToken = sessionStorage.getItem("apiToken");
+  const onlyIDsCart = localStorage.getItem("cartOfOnlyIDs");
   addToCartButton.addEventListener("click", () => {
     if (!receivedToken) {
-      // ADD MESSAGE ON SCREEN
+      errorMessageDiv.classList.remove("hidden");
+      errorMessageText.textContent =
+        "Must be logged in to add product(s) to cart";
     } else {
       const subtractButton = document.querySelector(".subtract-button");
       const quantityNumber = subtractButton.nextElementSibling.textContent;
-      cart.push({ item: apiItem, quantity: quantityNumber });
-      localStorage.setItem("cart", JSON.stringify(cart));
-      console.log(localStorage.getItem("cart"));
+
+      if (cart.length === 0) {
+        cart.push({ item: apiItem, quantity: quantityNumber });
+        console.log("hello1");
+        localStorage.setItem("cart", JSON.stringify(cart));
+        console.log(localStorage.getItem("cart"));
+        addIDsToSeparateCart(cart);
+      } else {
+        console.log("hello3");
+        for (let i = 0; i < cart.length; i++) {
+          if (cart[i].item.id === apiItem.id) {
+            const cartQty = parseInt(cart[i].quantity);
+            const pageQty = parseInt(quantityNumber);
+            cart[i].quantity = cartQty + pageQty;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            console.log(localStorage.getItem("cart"));
+            addIDsToSeparateCart(cart);
+          }
+        }
+      }
+      console.log("onlyIDsCart", onlyIDsCart);
+      if (onlyIDsCart.includes(apiItem.id)) {
+        return;
+      } else {
+        cart.push({ item: apiItem, quantity: quantityNumber });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        console.log(localStorage.getItem("cart"));
+        addIDsToSeparateCart(cart);
+      }
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    console.log(localStorage.getItem("cart"));
+    addIDsToSeparateCart(cart);
+  });
+}
+
+function addOrSubtract() {
+  const subtractButton = document.querySelector(".subtract-button");
+  const quantityNumber = subtractButton.nextElementSibling;
+  const addButton = document.querySelector(".add-button");
+  subtractButton.setAttribute("disabled", "disabled");
+
+  subtractButton.addEventListener("click", () => {
+    const numberText = quantityNumber.textContent;
+    let currentNumber = parseInt(numberText);
+    currentNumber -= 1;
+    quantityNumber.textContent = currentNumber;
+    if (currentNumber === 1) {
+      subtractButton.disabled = true;
+    }
+    if (currentNumber < 3) {
+      addButton.removeAttribute("disabled");
+    }
+  });
+
+  addButton.addEventListener("click", () => {
+    const numberText = quantityNumber.textContent;
+    let currentNumber = parseInt(numberText);
+    currentNumber += 1;
+    quantityNumber.textContent = currentNumber;
+    if (currentNumber === 3) {
+      addButton.setAttribute("disabled", "disabled");
+    }
+    if (currentNumber > 1) {
+      subtractButton.removeAttribute("disabled");
     }
   });
 }
@@ -172,7 +257,29 @@ export function fetchCart() {
   }
 }
 
+function shareButtonURL() {
+  const shareButton = document.querySelector(".share-button");
+  const shareButtonMessageDiv = document.querySelector(
+    ".share-button-message-div",
+  );
+  const shareButtonMessage = document.querySelector(".share-button-message");
+  shareButtonMessage.textContent = apiEndPointSpecificProduct;
+  const shareButtonMessageDismiss = document.querySelector(
+    ".share-button-message-button",
+  );
+  shareButton.addEventListener("click", () => {
+    shareButtonMessageDiv.classList.remove("hidden");
+  });
+  shareButtonMessageDismiss.addEventListener("click", () => {
+    shareButtonMessageDiv.classList.add("hidden");
+  });
+}
+
+console.log(sessionStorage.getItem("apiToken"));
 populateSpecificProductPage(apiItem);
 importsFunctions1.errorMessageDismiss();
 addToCartListener();
 fetchCart();
+shareButtonURL();
+addOrSubtract();
+// localStorage.removeItem("cart");

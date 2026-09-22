@@ -16,8 +16,11 @@
   <body class="background-dark">
     <main class="main-register">
       <div class="spinner hidden"></div>
-      <div class="error-message-div hidden"></div>
-      <div class="register-toast-div">
+      <div class="error-message-div hidden">
+        <p>Something went wrong. Try again later.</p>
+        <button class="error-message-button">ok</button>
+      </div>
+      <div class="register-toast-div hidden">
         <p class="text-align-center">Account successfully registered!</p>
       </div>
       <section class="register-page background-light">
@@ -27,6 +30,16 @@
           upcoming collections and deals
         </p>
         <form class="form-register">
+          <label for="username-register-page" class="hidden">e-mail</label>
+          <input
+            type="text"
+            name="username-register-page"
+            id="username-register-page"
+            placeholder="Username"
+            title="Username including at least 1 uppercase letter, 1 lowercase letter, and 1 number"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            required
+          />
           <label for="email-register-page" class="hidden">e-mail</label>
           <input
             type="email"
@@ -34,6 +47,7 @@
             id="email-register-page"
             placeholder="E-Mail"
             title="Valid @stud.noroff.no email-address"
+            pattern=".*@stud.noroff.no"
             required
           />
           <label for="password-register-page" class="hidden">password</label>
@@ -43,6 +57,7 @@
             id="password-register-page"
             placeholder="Password"
             title="Valid password requires at least 1 uppercase letter, 1 lowercase letter, and 1 number"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             required
           />
           <label for="password-register-page-repeat" class="hidden"
@@ -102,6 +117,7 @@
         <a href="../account/login.html">login</a>
       </div>
     </main>
+    <script src="../js/register.js" type="module"></script>
     <script
       src="https://kit.fontawesome.com/aa8166dc37.js"
       crossorigin="anonymous"

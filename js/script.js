@@ -19,7 +19,7 @@ export async function getApi(apiEndPoint) {
     console.log(result);
     return result;
   } catch (error) {
-    const errorMessageDiv = document.querySelector("error-message-div");
+    const errorMessageDiv = document.querySelector(".error-message-div");
     errorMessageDiv.classList.remove("hidden");
   } finally {
     const spinner = document.querySelector(".spinner");
@@ -43,7 +43,7 @@ export async function getSpecificApiProduct(apiEndPointSpecificProduct) {
     console.log(result);
     return result;
   } catch (error) {
-    const errorMessageDiv = document.querySelector("error-message-div");
+    const errorMessageDiv = document.querySelector(".error-message-div");
     errorMessageDiv.classList.remove("hidden");
   } finally {
     const spinner = document.querySelector(".spinner");

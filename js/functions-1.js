@@ -94,7 +94,6 @@ export function addStars(ratingContainer, rating) {
 export function errorMessageDismiss() {
   const errorMessageButton = document.querySelector(".error-message-button");
   errorMessageButton.addEventListener("click", () => {
-    console.log(errorMessageButton);
     const errorMessageDiv = document.querySelector(".error-message-div");
     errorMessageDiv.classList.add("hidden");
   });

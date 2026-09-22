@@ -23,9 +23,9 @@ function populateCart(cartFromStorage) {
 
     /* Image */
     const cartImage = document.createElement("img");
-    console.log("cartItem.image.url:", cartItem.image.url);
-    cartImage.setAttribute("src", cartItem.image.url);
-    cartImage.setAttribute("alt", cartImage.description);
+    console.log("cartItem.image.url:", cartItem.item.image.url);
+    cartImage.setAttribute("src", cartItem.item.image.url);
+    cartImage.setAttribute("alt", cartItem.item.description);
     cartProduct.appendChild(cartImage);
 
     /* Container for information */
@@ -35,7 +35,7 @@ function populateCart(cartFromStorage) {
 
     /* Product Name */
     const productTitle = document.createElement("h4");
-    productTitle.textContent = cartItem.title;
+    productTitle.textContent = cartItem.item.title;
     cartProductInformation.appendChild(productTitle);
 
     /* Price-Container */
@@ -46,8 +46,8 @@ function populateCart(cartFromStorage) {
     /* Prices */
     const productPrice = document.createElement("p");
     const productDiscountedPrice = document.createElement("p");
-    productPrice.textContent = cartItem.price;
-    productDiscountedPrice.textContent = cartItem.discountedPrice;
+    productPrice.textContent = cartItem.item.price;
+    productDiscountedPrice.textContent = cartItem.item.discountedPrice;
     productPrices.appendChild(productPrice);
     productPrices.appendChild(productDiscountedPrice);
     importsFunctions1.checkPrices(productPrice, productDiscountedPrice);
@@ -56,7 +56,7 @@ function populateCart(cartFromStorage) {
     const productStars = document.createElement("div");
     productStars.classList.add("cart-stars");
     cartProductInformation.appendChild(productStars);
-    importsFunctions1.addStars(productStars, cartItem.rating);
+    importsFunctions1.addStars(productStars, cartItem.item.rating);
 
     /* Quantity-picker */
     const productQtyPickerAndSizePicker = document.createElement("div");
@@ -69,7 +69,7 @@ function populateCart(cartFromStorage) {
     qtyPickerButtonSubtract.classList.add("subtract-button");
     qtyPickerButtonSubtract.textContent = `\u2212`;
     const qtyPickerQty = document.createElement("p");
-    qtyPickerQty.textContent = 1;
+    qtyPickerQty.textContent = cartItem.quantity;
     const qtyPickerButtonAdd = document.createElement("button");
     qtyPickerButtonAdd.classList.add("add-button");
     qtyPickerButtonAdd.textContent = "+";
@@ -100,15 +100,15 @@ function populateCartSummary(cartFromStorage) {
     const summaryItem = document.createElement("div");
     summaryItem.classList.add("summary-item-cart");
     const itemName = document.createElement("h5");
-    itemName.textContent = cartItem.title;
+    itemName.textContent = cartItem.item.title;
     const itemQty = document.createElement("p");
     itemQty.classList.add("text-align-center");
-    itemQty.textContent = cartItem.quantity; // Figure out quantity later;
+    itemQty.textContent = cartItem.item.quantity; // Figure out quantity later;
     const itemPrice = document.createElement("p");
     itemPrice.classList.add("text-align-right");
-    console.log("cartItem.price", cartItem.price);
+    console.log("cartItem.price", cartItem.item.price);
     // Figure out later
-    const finalItemPrice = cartItem.price * cartItem.quantity;
+    const finalItemPrice = cartItem.item.price * cartItem.quantity;
     itemPrice.textContent = `${finalItemPrice}:-`;
     /* Add price to total */
     totalPrice += finalItemPrice;
@@ -158,7 +158,7 @@ function populateCartSummary(cartFromStorage) {
   const summaryTotalsFinal = document.createElement("h5");
   summaryTotalsFinal.textContent = "Total:";
   const finalTotal = document.createElement("p");
-  finalTotal.textContent = `${totalPrice.textContent + shippingCost.textContent}:-`;
+  finalTotal.textContent = `${totalPrice + shippingCost}:-`;
   cartPageSummaryFinal.appendChild(summaryTotalsFinal);
   cartPageSummaryFinal.appendChild(finalTotal);
   cartPageSummaryTotalsContainer.appendChild(cartPageSummaryFinal);
@@ -191,38 +191,6 @@ function clearCartFunctionality() {
   });
 }
 
-function checkCartForDuplicates(cart) {
-  const cartOfIDs = [];
-  cart.forEach((item) => {
-    cartOfIDs.push(item.id);
-  });
-  console.log("cartOfIDs", cartOfIDs);
-  const cartOfSingleIDOccurrence = [];
-  cartOfIDs.forEach((ID) => {
-    if (cartOfSingleIDOccurrence.includes(ID)) {
-      return;
-    } else {
-      cartOfSingleIDOccurrence.push(ID);
-    }
-  });
-  const cartOfSingleIDOccurrenceAndQty = [];
-  cartOfSingleIDOccurrence.forEach((id) => {
-    cartOfSingleIDOccurrenceAndQty.push({ id: id, qty: 1 });
-  });
-  console.log("cartOfSingleIDOccurrence", cartOfSingleIDOccurrence);
-  console.log("cartOfSingleIDOccurrenceAndQty", cartOfSingleIDOccurrenceAndQty);
-
-  const singleItemWithZeroOccurrences = cartOfSingleIDOccurrence.map((id) => {
-    let nr = 0;
-    if (cartOfIDs.includes(id)) {
-      nr++;
-      const idAndQty = { id: id, qty: nr };
-      return idAndQty;
-    }
-  });
-  console.log("singleItemWithZeroOccurrences", singleItemWithZeroOccurrences);
-}
-
 function cartPageOnStart() {
   clearCartFunctionality();
   const fetchedCart = importsFunctions1.fetchCart();
@@ -231,7 +199,6 @@ function cartPageOnStart() {
   } else {
     populateCart(fetchedCart);
     populateCartSummary(fetchedCart);
-    checkCartForDuplicates(fetchedCart);
     // Add quantity increase and subsequent updating of cart/summary
   }
 }

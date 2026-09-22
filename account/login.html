@@ -16,8 +16,11 @@
   <body class="background-dark">
     <main class="main-login">
       <div class="spinner hidden"></div>
-      <div class="error-message-div hidden"></div>
-      <div class="login-toast-div">
+      <div class="error-message-div hidden">
+        <p>Something went wrong. Try again later.</p>
+        <button class="error-message-button">ok</button>
+      </div>
+      <div class="login-toast-div hidden">
         <p class="text-align-center">Login successful!</p>
       </div>
       <section class="login-page background-light">
@@ -33,6 +36,7 @@
             id="email-login-page"
             placeholder="E-Mail"
             title="A registered @stud.noroff.no email-address"
+            pattern=".*@stud.noroff.no"
             required
           />
           <label for="password-login-page" class="hidden">e-mail</label>
@@ -41,6 +45,7 @@
             name="password-login-page"
             id="password-login-page"
             placeholder="Password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             required
           />
           <label for="login-submit" class="hidden">submit</label>

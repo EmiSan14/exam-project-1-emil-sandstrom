@@ -1,16 +1,19 @@
 "use strict";
 
+import { errorMessageDismiss } from "./functions-1.js";
+
 // POST /auth/login
 
 const noroffEndPoint = "https://v2.api.noroff.dev/auth/login";
-const accessToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRW1pU2FuMTQiLCJlbWFpbCI6ImVtaXNhbjA2OTUyQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzg3MDYxMDg1fQ.I-xBOnR8r2dQa2fEbkPyHiV9g9zl8bPOekJ2aErFIYM";
 const apiKey = "${{ secrets.APIKEY }}";
 
 const emailInput = document.getElementById("email-login-page");
 const passwordInput = document.getElementById("password-login-page");
 const loginSubmitButton = document.getElementById("login-submit");
 const loginToastDiv = document.querySelector(".login-toast-div");
+const errorMessageDiv = document.querySelector(".error-message-div");
+const errorMessageText = errorMessageDiv.firstElementChild;
+const errorMessageButton = errorMessageDiv.lastElementChild;
 
 function hideToast() {
   loginToastDiv.classList.add("hidden");
@@ -18,7 +21,12 @@ function hideToast() {
 
 function successfulLogin() {
   loginToastDiv.classList.remove("hidden");
-  // loginToastDiv.setTimeout(hideToast, 3000);
+  setTimeout(hideToast, 3000);
+}
+
+function errorMessageShow(errorMessage) {
+  errorMessageDiv.classList.remove("hidden");
+  errorMessageText.textContent = errorMessage;
 }
 
 async function loginAttempt(noroffLoginEndPoint) {
@@ -43,26 +51,33 @@ async function loginAttempt(noroffLoginEndPoint) {
     console.log(result.data);
     return result.data.accessToken;
   } catch (error) {
-    const errorMessageDiv = document.querySelector("error-message-div");
-    errorMessageDiv.classList.remove("hidden");
+    console.log(error.message);
+    errorMessageShow(error.message);
   } finally {
     const spinner = document.querySelector(".spinner");
     spinner.classList.add("hidden");
   }
 }
 
-async function loginSubmitFunctionality() {
-  loginSubmitButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    // Send input-data to Noroff login through POST-request
-    const accessToken = await loginAttempt(noroffEndPoint);
-    console.log(accessToken);
-
+loginSubmitButton.addEventListener("click", async (event) => {
+  event.preventDefault();
+  // Send input-data to Noroff login through POST-request
+  const receivedToken = await loginAttempt(noroffEndPoint);
+  console.log("receivedToken", receivedToken);
+  if (!receivedToken) {
+    errorMessageDiv.classList.remove("hidden");
+  } else {
     // If successful - Take received token and add it to storage
-    //const receivedToken = // API-result
-    //  sessionStorage.setItem("apiToken", receivedToken);
+    sessionStorage.setItem("apiToken", receivedToken);
+    console.log(sessionStorage.getItem("apiToken"));
 
     // Toast message for success
     successfulLogin();
-  });   
-}
+    emailInput.value = "";
+    passwordInput.value = "";
+  }
+});
+
+errorMessageButton.addEventListener("click", () => {
+  errorMessageDiv.classList.add("hidden");
+});
