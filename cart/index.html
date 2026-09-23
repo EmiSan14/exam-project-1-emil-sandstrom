@@ -23,13 +23,15 @@
       <section class="cart">
         <h2 class="hidden">cart-products and summary</h2>
         <article class="cart-products">
-          <div class="clear-cart-message">
+          <div class="clear-cart-message hidden">
             <p>Do you want to remove all items from your cart?</p>
             <button class="clear-cart-confirm">yes</button>
             <button class="clear-cart-cancel">no</button>
           </div>
           <h3 class="hidden">Cart-products</h3>
-          <h3 class="empty-cart-message">No products in cart</h3>
+          <h3 class="empty-cart-message">
+            No products in cart. (Are you logged in?)
+          </h3>
           <!--
           <figure class="cart-product">
             <img
@@ -181,9 +183,8 @@
               <i class="fa-regular fa-trash-can"></i>
             </div>
           </figure>
-        -->
           <button class="clear-cart-button">clear cart</button>
-        </article>
+        --></article>
         <article class="cart-summary">
           <form>
             <label for="discount-code-input" class="hidden"

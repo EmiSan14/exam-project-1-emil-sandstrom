@@ -113,6 +113,31 @@ export function fetchCart() {
   }
 }
 
+export function mobileDropdownMenu() {
+  const dropdownBars = document.querySelectorAll(".fa-bars");
+  const dropdownContainer = document.querySelector(
+    ".header-dropdown-container",
+  );
+  dropdownBars.forEach((icon) => {
+    icon.addEventListener("click", () => {
+      dropdownContainer.classList.toggle("hidden");
+    });
+  });
+}
+
+export function colorToIcons(fetchedApiToken) {
+  const cartIcons = document.querySelectorAll(".fa-cart-shopping");
+  const accountIcons = document.querySelectorAll(".fa-circle-user");
+  if (fetchedApiToken) {
+    accountIcons.forEach((icon) => {
+      icon.classList.add("color-primary");
+    });
+    cartIcons.forEach((icon) => {
+      icon.classList.add("color-primary");
+    });
+  }
+}
+
 /* For spec product-page specifically */
 
 export function quantityButtonSubtract(qtyPickerContainer) {

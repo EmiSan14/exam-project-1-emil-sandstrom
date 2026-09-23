@@ -12,16 +12,16 @@ const addressContainer = emailContainer.nextElementSibling;
 const addressValue = addressContainer.lastElementChild;
 const towncityContainer = addressContainer.nextElementSibling;
 const towncityValue = towncityContainer.lastElementChild;
-const zipcodeContainer = towncityContainer.nextElementSibling;
-const zipcodeValue = zipcodeContainer.lastElementChild;
-const itemsContainer = zipcodeContainer.nextElementSibling;
+const postalCodeContainer = towncityContainer.nextElementSibling;
+const postalCodeValue = postalCodeContainer.lastElementChild;
+const itemsContainer = postalCodeContainer.nextElementSibling;
 const itemsValue = itemsContainer.lastElementChild;
 const shippingContainer = itemsContainer.nextElementSibling;
 const shippingValue = shippingContainer.lastElementChild;
 const totalContainer = shippingContainer.nextElementSibling;
 const totalValue = totalContainer.lastElementChild;
-const paymentmethodContainer = totalContainer.nextElementSibling;
-const paymentmethodValue = paymentmethodContainer.lastElementChild;
+const paymentmOptionContainer = totalContainer.nextElementSibling;
+const paymentmOptionValue = paymentmOptionContainer.lastElementChild;
 
 const summaryItemsContainerSuccess = document.querySelector(
   ".summary-items-success",
@@ -31,11 +31,11 @@ function populateSuccessSummary(purchaseInfo) {
   emailValue.textContent = purchaseInfo.email;
   addressValue.textContent = purchaseInfo.address;
   towncityValue.textContent = purchaseInfo.townCity;
-  zipcodeValue.textContent = purchaseInfo.zipCode;
+  postalCodeValue.textContent = purchaseInfo.postalCode;
   itemsValue.textContent = purchaseInfo.preShippingTotal;
   shippingValue.textContent = purchaseInfo.shipping;
   totalValue.textContent = purchaseInfo.total;
-  paymentmethodValue.textContent = purchaseInfo.paymentMethod;
+  paymentmOptionValue.textContent = purchaseInfo.paymentOption;
 }
 
 function populateSuccessItems(finalCart) {
@@ -46,8 +46,8 @@ function populateSuccessItems(finalCart) {
 
     // Image
     const itemImage = document.createElement("img");
-    itemImage.setAttribute("src", cartItem.image.url);
-    itemImage.setAttribute("alt", cartItem.description);
+    itemImage.setAttribute("src", cartItem.item.image.url);
+    itemImage.setAttribute("alt", cartItem.item.description);
     itemContainer.appendChild(itemImage);
 
     // Container for details
@@ -57,7 +57,7 @@ function populateSuccessItems(finalCart) {
     // Title of item
     const itemHeading = document.createElement("h5");
     itemHeading.classList.add("success-item-header");
-    itemHeading.textContent = cartItem.title;
+    itemHeading.textContent = cartItem.item.title;
     itemDetailsContainer.appendChild(itemHeading);
 
     // Quantity of the item
@@ -69,7 +69,7 @@ function populateSuccessItems(finalCart) {
     // Price of the item (only final, no pre-discount-price)
     const itemPrice = document.createElement("p");
     itemPrice.classList.add("success-item-price");
-    itemPrice.textContent = `${cartItem.price}:-`;
+    itemPrice.textContent = `${cartItem.item.price}:-`;
     itemDetailsContainer.appendChild(itemPrice);
 
     // Append to items-part of summary
@@ -80,9 +80,14 @@ function populateSuccessItems(finalCart) {
 
 function successPageOnStart() {
   // FETCH CART AND PAYMENT INFO
-  const purchaseInfoJSON = sessionStorage.getItem("purchaseInfo");
-  const purchaseInfoFromStorage = JSON.parse(purchaseInfoJSON);
+  const purchaseInfoFromStorage = JSON.parse(
+    sessionStorage.getItem("purchaseInfo"),
+  );
+  const cartFromStorage = importsFunctions1.fetchCart();
+  console.log(purchaseInfoFromStorage);
 
   populateSuccessSummary(purchaseInfoFromStorage);
   populateSuccessItems(cartFromStorage);
 }
+
+successPageOnStart();

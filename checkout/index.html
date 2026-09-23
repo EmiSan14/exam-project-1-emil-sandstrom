@@ -62,31 +62,31 @@
             <fieldset class="checkout-form-delivery-address">
               <legend>Delivery Address</legend>
 
-              <label for="first-name-checkout" class="hidden">first name</label>
+              <label for="first-name-checkout">first name</label>
               <input
                 type="text"
                 name="first-name-checkout"
                 id="first-name-checkout"
                 placeholder="First Name*"
                 title="Your first name (Minimum of 2 letters. Only letters, use space in place of hyphen in a double name)"
-                pattern="[A-Za-z]"
+                pattern="[A-Za-z]{2,}"
                 minlength="2"
                 maxlength="30"
                 required
               />
-              <label for="last-name-checkout" class="hidden">last name</label>
+              <label for="last-name-checkout">last name</label>
               <input
                 type="text"
                 name="last-name-checkout"
                 id="last-name-checkout"
                 placeholder="Last Name*"
                 title="Your surname (Minimum of 2 letters. Only letters, use space in place of hyphen in a double name)"
-                pattern="[A-Za-z]"
+                pattern="[A-Za-z]{2,}"
                 minlength="2"
                 maxlength="40"
                 required
               />
-              <label for="address-checkout" class="hidden">address</label>
+              <label for="address-checkout">address</label>
               <input
                 type="text"
                 name="address-checkout"
@@ -95,50 +95,46 @@
                 title="the address of your place of residence (Only letters, house number is later)"
                 minlength="2"
                 maxlength="30"
-                pattern="[A-Za-z]"
+                pattern="[A-Za-z]{2,}"
                 required
               />
-              <label for="town-city-checkout" class="hidden">town/city</label>
+              <label for="town-city-checkout">town/city</label>
               <input
                 type="text"
                 name="town-city-checkout"
                 id="town-city-checkout"
                 placeholder="Town/City*"
                 title="your town or city of residence"
-                pattern="[A-Za-z]"
+                pattern="[A-Za-z]{2,}"
                 minlength="2"
                 maxlength="30"
                 required
               />
-              <label for="province-checkout" class="hidden">province</label>
+              <label for="province-checkout">province</label>
               <input
                 type="text"
                 name="province-checkout"
                 id="province-checkout"
                 placeholder="Province"
                 title="your province of residence"
-                pattern="[A-Za-z]"
+                pattern="[A-Za-z]{2,}"
                 minlength="2"
                 maxlength="30"
                 required
               />
-              <label for="house-unit-apt-nr-checkout" class="hidden"
-                >house/unit/apt nr</label
-              >
+              <label for="house-unit-apt-nr-checkout">house/unit/apt nr</label>
               <input
                 type="text"
                 name="house-unit-apt-nr-checkout"
                 id="house-unit-apt-nr-checkout"
                 placeholder="House/Unit/Apt nr"
                 title="your place of residence's number"
-                pattern="[1-9]{1,4}"
+                pattern="\d{1,4}"
                 minlength="1"
                 maxlength="4"
                 required
               />
-              <label for="postal-code-checkout" class="hidden"
-                >postal code</label
-              >
+              <label for="postal-code-checkout">postal code</label>
               <input
                 type="text"
                 name="postal-code-checkout"

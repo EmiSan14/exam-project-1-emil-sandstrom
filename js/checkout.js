@@ -9,35 +9,48 @@ const checkoutPageSummaryTable = document.querySelector(
   ".summary-table-checkout",
 );
 
+const firstNameInput = document.getElementById("first-name-checkout");
+const lastNameInput = document.getElementById("last-name-checkout");
+const addressInput = document.getElementById("address-checkout");
+const townCityInput = document.getElementById("town-city-checkout");
+const provinceInput = document.getElementById("province-checkout");
+const houseUnitAptNrInput = document.getElementById(
+  "house-unit-apt-nr-checkout",
+);
+const postalCodeInput = document.getElementById("postal-code-checkout");
 const checkoutSubmitButton = document.getElementById("checkout-submit");
-console.log(checkoutSubmitButton);
 
 function populateCheckoutSummary(cartFromStorage) {
   const checkoutPageSummaryItems = document.createElement("div");
   checkoutPageSummaryItems.classList.add("summary-items-cart");
   let totalPrice = 0;
+  let totalPriceFinal = 0;
   /* Individual items */
   cartFromStorage.forEach((cartItem) => {
+    totalPrice = 0;
     const summaryItem = document.createElement("div");
     summaryItem.classList.add("summary-item-checkout");
     const itemName = document.createElement("h5");
-    itemName.textContent = cartItem.title;
+    itemName.textContent = cartItem.item.title;
     const itemQty = document.createElement("p");
     itemQty.classList.add("text-align-center");
-    itemQty.textContent = cartItem.quantity; // Figure out quantity later;
+    itemQty.textContent = cartItem.quantity;
     const itemPrice = document.createElement("p");
     itemPrice.classList.add("text-align-right");
-    console.log("cartItem.price", cartItem.price);
-    // Figure out later
-    const finalItemPrice = cartItem.price * cartItem.quantity;
+    let finalItemPrice = parseFloat(
+      cartItem.item.price * cartItem.quantity,
+    ).toFixed(2);
     itemPrice.textContent = `${finalItemPrice}:-`;
     /* Add price to total */
-    totalPrice += finalItemPrice;
+    totalPrice = parseFloat(totalPrice + finalItemPrice);
     summaryItem.appendChild(itemName);
     summaryItem.appendChild(itemQty);
     summaryItem.appendChild(itemPrice);
     checkoutPageSummaryItems.appendChild(summaryItem);
+    totalPriceFinal += totalPrice;
   });
+
+  const totalPriceF = parseFloat(totalPriceFinal).toFixed(2);
   // Add to DOM
   checkoutPageSummaryTable.appendChild(checkoutPageSummaryItems);
 
@@ -54,7 +67,8 @@ function populateCheckoutSummary(cartFromStorage) {
   const summaryTotalsItems = document.createElement("h5");
   summaryTotalsItems.textContent = "Item(s):";
   const preShippingTotal = document.createElement("p");
-  preShippingTotal.textContent = `${totalPrice}:-`;
+  preShippingTotal.textContent = `${totalPriceF}:-`;
+  preShippingTotal.classList.add("pre-shipping-total");
   checkoutPageSummaryTotals.appendChild(summaryTotalsItems);
   checkoutPageSummaryTotals.appendChild(preShippingTotal);
   checkoutPageSummaryTotalsContainer.appendChild(checkoutPageSummaryTotals);
@@ -66,12 +80,13 @@ function populateCheckoutSummary(cartFromStorage) {
   summaryTotalsShipping.textContent = "Shipping:";
   const shippingTotal = document.createElement("p");
   let shippingCost = 0;
-  if (preShippingTotal.textContent > 800) {
-    shippingTotal.textContent = `${shippingCost}:-`;
+  if (totalPriceF > 800) {
+    shippingTotal.textContent = `Free`;
   } else {
     shippingCost += 199;
     shippingTotal.textContent = `${shippingCost}:-`;
   }
+  shippingTotal.classList.add("shipping-total");
   checkoutPageSummaryShipping.appendChild(summaryTotalsShipping);
   checkoutPageSummaryShipping.appendChild(shippingTotal);
   checkoutPageSummaryTotalsContainer.appendChild(checkoutPageSummaryShipping);
@@ -82,7 +97,9 @@ function populateCheckoutSummary(cartFromStorage) {
   const summaryTotalsFinal = document.createElement("h5");
   summaryTotalsFinal.textContent = "Total:";
   const finalTotal = document.createElement("p");
-  finalTotal.textContent = `${totalPrice.textContent + shippingCost.textContent}:-`;
+  const finalTotalPrice = parseFloat(totalPriceF + shippingCost).toFixed(2);
+  finalTotal.textContent = `${finalTotalPrice}:-`;
+  finalTotal.classList.add("final-total");
   checkoutPageSummaryFinal.appendChild(summaryTotalsFinal);
   checkoutPageSummaryFinal.appendChild(finalTotal);
   checkoutPageSummaryTotalsContainer.appendChild(checkoutPageSummaryFinal);
@@ -91,31 +108,58 @@ function populateCheckoutSummary(cartFromStorage) {
   checkoutPageSummaryTable.appendChild(checkoutPageSummaryTotalsContainer);
 }
 
-const firstNameInput = document.getElementById("first-name-checkout");
-const lastNameInput = document.getElementById("last-name-checkout");
-const addressInput = document.getElementById("address-checkout");
-const townCityInput = document.getElementById("town-city-checkout");
-const provinceInput = document.getElementById("province-checkout");
-const houseUnitAptNrInput = document.getElementById(
-  "house-unit-apt-nr-checkout",
-);
-const postalCodeInput = document.getElementById("postal-code-checkout");
-
 function addFormValuesToStorage() {
+  const checkedPaymentOption = document.querySelector(
+    "input[name=payment-option]:checked",
+  );
+  const chosenPaymentOption =
+    checkedPaymentOption.nextElementSibling.textContent;
+  const itemsValue = document.querySelector(".pre-shipping-total");
+  const shippingCost = document.querySelector(".shipping-total");
+  const finalTotalPrice = document.querySelector(".final-total");
   let formValues = {
+    email: sessionStorage.getItem("email"),
     firstName: firstNameInput.value,
     lastName: lastNameInput.value,
     address: addressInput.value,
     townCity: townCityInput.value,
     province: provinceInput.value,
-    houseUnitAptNr: houseUnitAptNrInput,
+    houseUnitAptNr: houseUnitAptNrInput.value,
+    postalCode: postalCodeInput.value,
+    preShippingTotal: itemsValue.textContent,
+    shipping: shippingCost.textContent,
+    total: finalTotalPrice.textContent,
+    paymentOption: chosenPaymentOption,
   };
-  formValuesJSON = JSON.stringify(formValues);
+  const formValuesJSON = JSON.stringify(formValues);
   sessionStorage.setItem("purchaseInfo", formValuesJSON);
+  console.log("formValues:", formValues);
 }
 
-checkoutSubmitButton.addEventListener("click", () => {
-  checkoutSubmitButton.preventDefault();
+checkoutSubmitButton.addEventListener("click", (event) => {
+  const allValues = [
+    firstNameInput,
+    lastNameInput,
+    addressInput,
+    townCityInput,
+    provinceInput,
+    houseUnitAptNrInput,
+    postalCodeInput,
+  ];
+  event.preventDefault();
+  addFormValuesToStorage();
+  const falseValues = [];
+  allValues.forEach((value) => {
+    const checkedValue = value.checkValidity();
+    if (checkedValue === false) {
+      falseValues.push(checkedValue);
+      value.style.borderColor = "#B30108";
+    }
+  });
+  if (falseValues.length === 0) {
+    addFormValuesToStorage();
+    window.location.assign("../success/index.html");
+  }
 });
 
 function checkoutPageOnStart() {

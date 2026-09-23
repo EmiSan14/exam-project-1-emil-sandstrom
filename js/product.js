@@ -17,6 +17,16 @@ const apiItem = apiItemFull.data;
 const errorMessageDiv = document.querySelector(".error-message-div");
 const errorMessageText = errorMessageDiv.firstElementChild;
 const errorMessageButton = errorMessageDiv.lastElementChild;
+const addedToCartToast = document.querySelector(".added-to-cart-toast-div");
+
+function hideToast() {
+  addedToCartToast.classList.add("hidden");
+}
+
+function successfulProductAdd() {
+  addedToCartToast.classList.remove("hidden");
+  setTimeout(hideToast, 3000);
+}
 
 function addImage(apiProduct) {
   const productImage = document.createElement("img");
@@ -178,36 +188,30 @@ function addToCartListener() {
 
       if (cart.length === 0) {
         cart.push({ item: apiItem, quantity: quantityNumber });
-        console.log("hello1");
         localStorage.setItem("cart", JSON.stringify(cart));
-        console.log(localStorage.getItem("cart"));
         addIDsToSeparateCart(cart);
+        successfulProductAdd();
       } else {
-        console.log("hello3");
         for (let i = 0; i < cart.length; i++) {
           if (cart[i].item.id === apiItem.id) {
             const cartQty = parseInt(cart[i].quantity);
             const pageQty = parseInt(quantityNumber);
             cart[i].quantity = cartQty + pageQty;
             localStorage.setItem("cart", JSON.stringify(cart));
-            console.log(localStorage.getItem("cart"));
             addIDsToSeparateCart(cart);
+            successfulProductAdd();
           }
         }
       }
-      console.log("onlyIDsCart", onlyIDsCart);
       if (onlyIDsCart.includes(apiItem.id)) {
         return;
       } else {
         cart.push({ item: apiItem, quantity: quantityNumber });
         localStorage.setItem("cart", JSON.stringify(cart));
-        console.log(localStorage.getItem("cart"));
         addIDsToSeparateCart(cart);
+        successfulProductAdd();
       }
     }
-    localStorage.setItem("cart", JSON.stringify(cart));
-    console.log(localStorage.getItem("cart"));
-    addIDsToSeparateCart(cart);
   });
 }
 
@@ -275,7 +279,8 @@ function shareButtonURL() {
   });
 }
 
-console.log(sessionStorage.getItem("apiToken"));
+const fetchedApiToken = sessionStorage.getItem("apiToken");
+importsFunctions1.colorToIcons(fetchedApiToken);
 populateSpecificProductPage(apiItem);
 importsFunctions1.errorMessageDismiss();
 addToCartListener();

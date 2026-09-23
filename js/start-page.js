@@ -1,4 +1,7 @@
+import * as importsFunctions1 from "./functions-1.js";
 import * as importsStart from "./script.js";
+
+let cart = [];
 
 const apiEndPoint = "https://v2.api.noroff.dev/online-shop";
 
@@ -345,6 +348,11 @@ directionalButtonRight.addEventListener("click", () => {
   }
 });
 
+const fetchedCart = localStorage.getItem("cart");
+const apiToken = sessionStorage.getItem("apiToken");
+console.log(apiToken);
+importsFunctions1.colorToIcons(fetchedCart, apiToken);
+importsFunctions1.mobileDropdownMenu();
 carouselCTAS();
 productAnchors();
 

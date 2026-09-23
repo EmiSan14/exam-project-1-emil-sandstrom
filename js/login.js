@@ -1,7 +1,5 @@
 "use strict";
 
-import { errorMessageDismiss } from "./functions-1.js";
-
 // POST /auth/login
 
 const noroffEndPoint = "https://v2.api.noroff.dev/auth/login";
@@ -69,6 +67,7 @@ loginSubmitButton.addEventListener("click", async (event) => {
   } else {
     // If successful - Take received token and add it to storage
     sessionStorage.setItem("apiToken", receivedToken);
+    sessionStorage.setItem("email", emailInput.value);
     console.log(sessionStorage.getItem("apiToken"));
 
     // Toast message for success
