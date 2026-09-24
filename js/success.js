@@ -27,6 +27,15 @@ const summaryItemsContainerSuccess = document.querySelector(
   ".summary-items-success",
 );
 
+const continueShoppingButton = document.getElementById(
+  "continue-shopping-button",
+);
+const continueShoppingButton2 = document.getElementById(
+  "continue-shopping-button-2",
+);
+
+/* Adding form values from previous page to
+comprehensive last summary */
 function populateSuccessSummary(purchaseInfo) {
   emailValue.textContent = purchaseInfo.email;
   addressValue.textContent = purchaseInfo.address;
@@ -38,6 +47,7 @@ function populateSuccessSummary(purchaseInfo) {
   paymentmOptionValue.textContent = purchaseInfo.paymentOption;
 }
 
+/* Adding cart items with final details to summary */
 function populateSuccessItems(finalCart) {
   finalCart.forEach((cartItem) => {
     // Container
@@ -63,7 +73,7 @@ function populateSuccessItems(finalCart) {
     // Quantity of the item
     const itemQty = document.createElement("p");
     itemQty.classList.add("success-item-qty");
-    itemQty.textContent = cartItem.quantity; // Figure out earlier
+    itemQty.textContent = `Quantity: ${cartItem.quantity}`;
     itemDetailsContainer.appendChild(itemQty);
 
     // Price of the item (only final, no pre-discount-price)
@@ -78,16 +88,35 @@ function populateSuccessItems(finalCart) {
   });
 }
 
+function resetCart() {
+  const emptyCart1 = [];
+  const emptyCart2 = [];
+  localStorage.setItem("cartOfOnlyIDs", emptyCart1);
+  localStorage.removeItem("cart", emptyCart2);
+}
+
 function successPageOnStart() {
   // FETCH CART AND PAYMENT INFO
   const purchaseInfoFromStorage = JSON.parse(
     sessionStorage.getItem("purchaseInfo"),
   );
   const cartFromStorage = importsFunctions1.fetchCart();
-  console.log(purchaseInfoFromStorage);
+  const fetchedApiToken = sessionStorage.getItem("apiToken");
+  importsFunctions1.mobileDropdownMenu();
+  importsFunctions1.colorToIcons(fetchedApiToken);
 
   populateSuccessSummary(purchaseInfoFromStorage);
   populateSuccessItems(cartFromStorage);
 }
+
+continueShoppingButton.addEventListener("click", () => {
+  resetCart();
+  window.location.assign("../index.html");
+});
+
+continueShoppingButton2.addEventListener("click", () => {
+  resetCart();
+  window.location.assign("../index.html");
+});
 
 successPageOnStart();

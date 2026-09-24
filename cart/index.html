@@ -18,7 +18,65 @@
   </head>
 
   <body>
-    <main>
+    <header>
+      <nav>
+        <div class="header-upper">
+          <div>
+            <a href="#" class="logo"
+              ><span class="color-primary">W</span>AKARANAI</a
+            >
+          </div>
+          <div id="header-upper-search">
+            <label for="searchbar-tablet-and-desktop" class="hidden"> </label>
+            <i
+              class="fa-solid fa-magnifying-glass color-primary"
+              id="search-icon-searchbar"
+            ></i>
+            <input
+              type="search"
+              name="searchbar-tablet-and-desktop"
+              id="searchbar-tablet-and-desktop"
+              placeholder="Search"
+            />
+          </div>
+          <div id="header-upper-right-tablet-and-desktop">
+            <a href="../account/login.html"
+              ><i class="fa-solid fa-circle-user"></i
+            ></a>
+            <a href="../cart/index.html"
+              ><i class="fa-solid fa-cart-shopping"></i
+            ></a>
+          </div>
+          <div id="header-upper-right-mobile">
+            <i
+              class="fa-solid fa-magnifying-glass color-primary"
+              tabindex="0"
+            ></i>
+            <i class="fa-solid fa-bars color-primary" tabindex="0"></i>
+          </div>
+        </div>
+        <div class="header-dropdown-container hidden">
+          <div class="header-dropdown-div">
+            <a href="#">Cart</a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+          </div>
+          <div class="header-dropdown-div">
+            <a href="../account/login.html">Login</a>
+            <a href="../account/login.html"
+              ><i class="fa-solid fa-circle-user"></i
+            ></a>
+          </div>
+        </div>
+        <div class="breadcrumbs">
+          <ul>
+            <li><a href="../index.html">Start</a></li>
+            <li><a href="../product/index.html">Product</a></li>
+            <li><a id="breadcrumbs-active-cart" href="#">Cart</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main id="main-cart">
       <h1 class="cart-h1">Cart</h1>
       <section class="cart">
         <h2 class="hidden">cart-products and summary</h2>
@@ -32,159 +90,7 @@
           <h3 class="empty-cart-message">
             No products in cart. (Are you logged in?)
           </h3>
-          <!--
-          <figure class="cart-product">
-            <img
-              src="../images/alpcem-portrait-4563909_1280-compressed.jpg"
-              alt=""
-            />
-            <div class="cart-product-information">
-              <h4>Product name</h4>
-              <div class="cart-product-prices">
-                <p class="price-line-through">104.29:-</p>
-                <p>104.29:-</p>
-              </div>
-              <div class="cart-stars">
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-              </div>
-              <div class="qty-picker-and-size-btn-cart">
-                <div class="qty-picker-cart">
-                  <button class="subtract-button">&#8722;</button>
-                  <p>1</p>
-                  <button class="add-button">+</button>
-                </div>
-              </div>
-            </div>
-            <div class="trashcan-cart">
-              <i class="fa-regular fa-trash-can"></i>
-            </div>
-          </figure>
-          <figure class="cart-product">
-            <img
-              src="../images/alpcem-portrait-4563909_1280-compressed.jpg"
-              alt=""
-            />
-            <div class="cart-product-information">
-              <h4>Product name</h4>
-              <div class="cart-product-prices">
-                <p class="price-line-through">104.29:-</p>
-                <p>104.29:-</p>
-              </div>
-              <div class="cart-stars">
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-              </div>
-              <div class="qty-picker-and-size-btn-cart">
-                <div class="qty-picker-cart">
-                  <button class="subtract-button">&#8722;</button>
-                  <p>1</p>
-                  <button class="add-button">+</button>
-                </div>
-              </div>
-            </div>
-            <div class="trashcan-cart">
-              <i class="fa-regular fa-trash-can"></i>
-            </div>
-          </figure>
-          <figure class="cart-product">
-            <img
-              src="../images/alpcem-portrait-4563909_1280-compressed.jpg"
-              alt=""
-            />
-            <div class="cart-product-information">
-              <h4>Product name</h4>
-              <div class="cart-product-prices">
-                <p class="price-line-through">104.29:-</p>
-                <p>104.29:-</p>
-              </div>
-              <div class="cart-stars">
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-              </div>
-              <div class="qty-picker-and-size-btn-cart">
-                <div class="qty-picker-cart">
-                  <button class="subtract-button">&#8722;</button>
-                  <p>1</p>
-                  <button class="add-button">+</button>
-                </div>
-              </div>
-            </div>
-            <div class="trashcan-cart">
-              <i class="fa-regular fa-trash-can"></i>
-            </div>
-          </figure>
-          <figure class="cart-product">
-            <img
-              src="../images/alpcem-portrait-4563909_1280-compressed.jpg"
-              alt=""
-            />
-            <div class="cart-product-information">
-              <h4>Pink Candy Perfume</h4>
-              <div class="cart-product-prices">
-                <p class="price-line-through">104.29:-</p>
-                <p>104.29:-</p>
-              </div>
-              <div class="cart-stars">
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-              </div>
-              <div class="qty-picker-and-size-btn-cart">
-                <div class="qty-picker-cart">
-                  <button class="subtract-button">&#8722;</button>
-                  <p>1</p>
-                  <button class="add-button">+</button>
-                </div>
-              </div>
-            </div>
-            <div class="trashcan-cart">
-              <i class="fa-regular fa-trash-can"></i>
-            </div>
-          </figure>
-          <figure class="cart-product">
-            <img
-              src="../images/alpcem-portrait-4563909_1280-compressed.jpg"
-              alt=""
-            />
-            <div class="cart-product-information">
-              <h4>Product name</h4>
-              <div class="cart-product-prices">
-                <p class="price-line-through">104.29:-</p>
-                <p>104.29:-</p>
-              </div>
-              <div class="cart-stars">
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-                <p>&#9733;</p>
-              </div>
-              <div class="qty-picker-and-size-btn-cart">
-                <div class="qty-picker-cart">
-                  <button class="subtract-button">&#8722;</button>
-                  <p>1</p>
-                  <button class="add-button">+</button>
-                </div>
-              </div>
-            </div>
-            <div class="trashcan-cart">
-              <i class="fa-regular fa-trash-can"></i>
-            </div>
-          </figure>
-          <button class="clear-cart-button">clear cart</button>
-        --></article>
+        </article>
         <article class="cart-summary">
           <form>
             <label for="discount-code-input" class="hidden"
@@ -214,50 +120,71 @@
               <h4 class="text-align-center">quantity</h4>
               <h4 class="text-align-right">price</h4>
             </div>
-            <!--
-            <div class="summary-items-cart">
-              <div class="summary-item-cart">
-                <h5>Item name here</h5>
-                <p class="text-align-center">qty</p>
-                <p class="text-align-right">1234:-</p>
-              </div>
-              <div class="summary-item-cart">
-                <h5>Item name here</h5>
-                <p class="text-align-center">qty</p>
-                <p class="text-align-right">1234:-</p>
-              </div>
-            </div>
-
-            <div class="summary-totals-cart">
-              <div class="summary-totals-item-cart">
-                <h5>Item(s)</h5>
-                <p>0:-</p>
-              </div>
-              <div class="summary-totals-shipping-cart">
-                <h5>Shipping:</h5>
-                <p>0:-</p>
-              </div>
-              <div class="summary-totals-total-cart">
-                <h5>Total:</h5>
-                <p>0:-</p>
-              </div>
-            </div>
-
-            <button>proceed to checkout</button>
-            <a href="../checkout/index.html">proceed to checkout</a>
--->
           </figure>
         </article>
       </section>
-      <div class="temporary-navigation">
-        <a href="../index.html">start</a>
-        <a href="../product/index.html">product</a>
-        <a href="../checkout/index.html">checkout</a>
-        <a href="../success/index.html">success</a>
-        <a href="../account/login.html">login</a>
-        <a href="../account/register.html">register</a>
-      </div>
     </main>
+    <footer id="footer-cart">
+      <div class="footer-header" id="general-footer">
+        <h3 tabindex="0">General</h3>
+      </div>
+      <div class="footer-links" id="footer-links-1">
+        <ul class="links-general">
+          <li class="footer-grid-item-one"><a href="">About us</a></li>
+          <li class="footer-grid-item-two"><a href="">Contact us</a></li>
+          <li class="footer-grid-item-three"><a href="">Our values</a></li>
+          <li class="footer-grid-item-four">
+            <a href="">Advertise with us</a>
+          </li>
+          <li class="footer-grid-item-five"><a href="">Affiliates</a></li>
+          <li class="footer-grid-item-six"><a href="">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-header" id="customers-footer">
+        <h3 tabindex="0">For customers</h3>
+      </div>
+      <div class="footer-links" id="footer-links-2">
+        <ul class="links-for-customers">
+          <li class="footer-grid-item-one"><a href="">Accessibility</a></li>
+          <li class="footer-grid-item-two">
+            <a href="">Terms and conditions</a>
+          </li>
+          <li class="footer-grid-item-three"><a href="">Privacy</a></li>
+          <li class="footer-grid-item-four"><a href="">Cookie policy</a></li>
+          <li class="footer-grid-item-five"><a href="">Policies</a></li>
+          <li class="footer-grid-item-six"><a href="">Returns</a></li>
+        </ul>
+      </div>
+      <div class="footer-header" id="social-media-footer-upper">
+        <h3 tabindex="0">Social media</h3>
+      </div>
+      <div class="footer-links social-media-footer">
+        <a href="" id="footer-x"
+          ><img
+            src="../images/x-logo.jpg"
+            alt="x/twitter icon"
+            aria-label="go to our twitter/x page"
+        /></a>
+        <a href="" id="footer-instagram"
+          ><img
+            src="../images/instagram-logo.webp"
+            alt="instagram icon"
+            aria-label="go to our instagram page"
+        /></a>
+        <a href="" id="footer-facebook"
+          ><img
+            src="../images/facebook-logo.webp"
+            alt="facebook icon"
+            aria-label=" go to our facebook page"
+        /></a>
+        <a href="" id="footer-tiktok"
+          ><img
+            src="../images/tiktok-logo-footer.png"
+            alt="tiktok icon"
+            aria-label="go to our tiktok page"
+        /></a>
+      </div>
+    </footer>
     <script src="../js/cart.js" type="module"></script>
     <script
       src="https://kit.fontawesome.com/aa8166dc37.js"

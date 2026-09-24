@@ -74,7 +74,13 @@ label {
   text-decoration: none;
 }
 
-.breadcrumbs-active {
+#breadcrumbs-active-start,
+#breadcrumbs-active-product,
+#breadcrumbs-active-cart,
+#breadcrumbs-active-checkout,
+#breadcrumbs-active-success,
+#breadcrumbs-active-login,
+#breadcrumbs-active-register {
   text-decoration: underline;
 }
 
@@ -143,6 +149,11 @@ footer li a {
   justify-content: space-between;
 }
 
+#footer-cart {
+  position: relative;
+  bottom: 0;
+}
+
 /* ==== OFTEN OCCURRING MARGINS/PADDING ==== */
 
 main {
@@ -187,6 +198,10 @@ main {
 
 .footer-links {
   margin-top: var(--small-distance-mobile);
+}
+
+#main-cart {
+  margin-bottom: 240px;
 }
 
 .carousel,
@@ -309,6 +324,7 @@ footer {
 #discount-code-input,
 #discount-code-apply-button,
 .summary-table-cart a,
+.clear-cart-button,
 #checkout-submit,
 #continue-shopping-button,
 #continue-shopping-button-2,
@@ -793,6 +809,11 @@ footer,
 #login-submit:hover,
 #register-submit:hover {
   background-color: var(--color-primary-hover);
+}
+
+#header-login,
+#header-register {
+  background-color: var(--color-background-primary);
 }
 
 .product-container-start,
@@ -1352,6 +1373,10 @@ img,
 
 .register-checkbox-div {
   display: flex;
+}
+
+.register-checkbox-div label {
+  text-transform: none;
 }
 
 /* LOADING/ERROR HANDLING/TOASTS */

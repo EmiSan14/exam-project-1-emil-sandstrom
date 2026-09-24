@@ -16,7 +16,6 @@ export async function getApi(apiEndPoint) {
   try {
     const response = await fetch(apiEndPoint, options);
     const result = await response.json();
-    console.log(result);
     return result;
   } catch (error) {
     const errorMessageDiv = document.querySelector(".error-message-div");
@@ -40,7 +39,6 @@ export async function getSpecificApiProduct(apiEndPointSpecificProduct) {
   try {
     const response = await fetch(apiEndPointSpecificProduct, options);
     const result = await response.json();
-    console.log(result);
     return result;
   } catch (error) {
     const errorMessageDiv = document.querySelector(".error-message-div");

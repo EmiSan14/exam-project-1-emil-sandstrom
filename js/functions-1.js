@@ -102,7 +102,6 @@ export function errorMessageDismiss() {
 export function fetchCart() {
   const cartInStorage = localStorage.getItem("cart");
   const usableCart = JSON.parse(cartInStorage);
-  console.log("cart:", usableCart);
   if (!usableCart) {
     return;
   } else {

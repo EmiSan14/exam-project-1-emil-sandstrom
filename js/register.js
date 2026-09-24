@@ -1,6 +1,6 @@
 "use strict";
 
-// POST /auth/login
+import * as importsFunctions1 from "./functions-1.js";
 
 const apiEndPoint = "https://v2.api.noroff.dev/auth/register";
 const apiKey = "${{ secrets.APIKEY }}";
@@ -31,6 +31,7 @@ function errorMessageShow(errorMessage) {
   errorMessageText.textContent = errorMessage;
 }
 
+/* Checks if both passwords are the same, then sends info from form to API */
 async function registerAttempt(noroffRegisterEndPoint) {
   const spinner = document.querySelector(".spinner");
   spinner.classList.remove("hidden");
@@ -54,16 +55,11 @@ async function registerAttempt(noroffRegisterEndPoint) {
     },
     body: JSON.stringify(loginCredentials),
   };
-  console.log("emailValue:", emailValue);
-  console.log("passwordValue:", passwordValue);
-  console.log("passwordRepeatValue:", passwordRepeatValue);
   try {
     const response = await fetch(noroffRegisterEndPoint, options);
     const result = await response.json();
-    console.log(result.data);
     return result;
   } catch (error) {
-    console.log(error.message);
     errorMessageText.textContent = error.message;
     errorMessageDismiss();
   } finally {
@@ -72,11 +68,12 @@ async function registerAttempt(noroffRegisterEndPoint) {
   }
 }
 
+/* Shows API-error info on screen if wrong, 
+otherwise positive feedback to signify completion */
 registerSubmitButton.addEventListener("click", async (event) => {
   event.preventDefault();
   // Send input-data to Noroff register through POST-request
   const registerAttempted = await registerAttempt(apiEndPoint);
-  console.log(registerAttempted);
   if (registerAttempted.statusCode === 400) {
     errorMessageShow(registerAttempted.errors[0].message);
   } else {
@@ -88,3 +85,7 @@ registerSubmitButton.addEventListener("click", async (event) => {
 errorMessageButton.addEventListener("click", () => {
   errorMessageDiv.classList.add("hidden");
 });
+
+const fetchedApiToken = sessionStorage.getItem("apiToken");
+importsFunctions1.mobileDropdownMenu();
+importsFunctions1.colorToIcons(fetchedApiToken);

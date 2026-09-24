@@ -1,5 +1,7 @@
 "use strict";
 
+import * as importsFunctions1 from "./functions-1.js";
+
 // POST /auth/login
 
 const noroffEndPoint = "https://v2.api.noroff.dev/auth/login";
@@ -22,11 +24,15 @@ function successfulLogin() {
   setTimeout(hideToast, 3000);
 }
 
+/* Showing info from API on screen if non-valid */
 function errorMessageShow(errorMessage) {
   errorMessageDiv.classList.remove("hidden");
   errorMessageText.textContent = errorMessage;
 }
 
+/* Data sent from page to API where login happens
+and getting back the API-token to be used as validator for 
+being able to add items to cart and signify being logged in */
 async function loginAttempt(noroffLoginEndPoint) {
   const spinner = document.querySelector(".spinner");
   spinner.classList.remove("hidden");
@@ -46,10 +52,8 @@ async function loginAttempt(noroffLoginEndPoint) {
   try {
     const response = await fetch(noroffLoginEndPoint, options);
     const result = await response.json();
-    console.log(result.data);
     return result.data.accessToken;
   } catch (error) {
-    console.log(error.message);
     errorMessageShow(error.message);
   } finally {
     const spinner = document.querySelector(".spinner");
@@ -57,18 +61,18 @@ async function loginAttempt(noroffLoginEndPoint) {
   }
 }
 
+/* Adding both API-token for being logged in 
+and email for final summary-screen */
 loginSubmitButton.addEventListener("click", async (event) => {
   event.preventDefault();
   // Send input-data to Noroff login through POST-request
   const receivedToken = await loginAttempt(noroffEndPoint);
-  console.log("receivedToken", receivedToken);
   if (!receivedToken) {
     errorMessageDiv.classList.remove("hidden");
   } else {
     // If successful - Take received token and add it to storage
     sessionStorage.setItem("apiToken", receivedToken);
     sessionStorage.setItem("email", emailInput.value);
-    console.log(sessionStorage.getItem("apiToken"));
 
     // Toast message for success
     successfulLogin();
@@ -80,3 +84,7 @@ loginSubmitButton.addEventListener("click", async (event) => {
 errorMessageButton.addEventListener("click", () => {
   errorMessageDiv.classList.add("hidden");
 });
+
+const fetchedApiToken = sessionStorage.getItem("apiToken");
+importsFunctions1.mobileDropdownMenu();
+importsFunctions1.colorToIcons(fetchedApiToken);

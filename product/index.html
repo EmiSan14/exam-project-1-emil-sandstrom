@@ -30,7 +30,6 @@
             <i
               class="fa-solid fa-magnifying-glass color-primary"
               id="search-icon-searchbar"
-              aria-label="searchbar"
             ></i>
             <input
               type="search"
@@ -40,44 +39,39 @@
             />
           </div>
           <div id="header-upper-right-tablet-and-desktop">
-            <a href="account/login.html"
-              ><i class="fa-solid fa-circle-user" aria-label="login-page"></i
+            <a href="../account/login.html"
+              ><i class="fa-solid fa-circle-user"></i
             ></a>
-            <a href="cart/index.html"
-              ><i class="fa-solid fa-cart-shopping" aria-label="cart-page"></i
+            <a href="../cart/index.html"
+              ><i class="fa-solid fa-cart-shopping"></i
             ></a>
           </div>
           <div id="header-upper-right-mobile">
             <i
               class="fa-solid fa-magnifying-glass color-primary"
-              aria-label="search-icon"
               tabindex="0"
             ></i>
-            <i
-              class="fa-solid fa-bars color-primary"
-              aria-label="dropdown-menu"
-              tabindex="0"
-            ></i>
+            <i class="fa-solid fa-bars color-primary" tabindex="0"></i>
           </div>
         </div>
         <div class="header-dropdown-container hidden">
           <div class="header-dropdown-div">
-            <a href="cart/index.html">Cart</a>
-            <a href="cart/index.html"
-              ><i class="fa-solid fa-cart-shopping" aria-label="cart-icon"></i
+            <a href="../cart/index.html">Cart</a>
+            <a href="../cart/index.html"
+              ><i class="fa-solid fa-cart-shopping"></i
             ></a>
           </div>
           <div class="header-dropdown-div">
-            <a href="account/login.html">Login</a>
-            <a href="account/login.html"
-              ><i class="fa-solid fa-circle-user" aria-label="login-page"></i
+            <a href="../account/login.html">Login</a>
+            <a href="../account/login.html"
+              ><i class="fa-solid fa-circle-user"></i
             ></a>
           </div>
         </div>
         <div class="breadcrumbs">
           <ul>
             <li><a href="../index.html">Start</a></li>
-            <li class="breadcrumbs-active"><a href="#">Product</a></li>
+            <li><a id="breadcrumbs-active-product" href="#">Product</a></li>
           </ul>
         </div>
       </nav>
@@ -96,15 +90,9 @@
         <p class="text-align-center">Product(s) added to cart!</p>
       </div>
       <h1 class="hidden">product page</h1>
-      <section class="specific-product"></section>
-      <div class="temporary-navigation">
-        <a href="../index.html">start</a>
-        <a href="../cart/index.html">cart</a>
-        <a href="../checkout/index.html">checkout</a>
-        <a href="../success/index.html">success</a>
-        <a href="../account/login.html">login</a>
-        <a href="../account/register.html">register</a>
-      </div>
+      <section class="specific-product">
+        <h2 class="hidden">product information</h2>
+      </section>
     </main>
     <footer>
       <div class="footer-header" id="general-footer">

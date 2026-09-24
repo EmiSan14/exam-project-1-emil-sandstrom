@@ -8,7 +8,6 @@ const apiEndPoint = "https://v2.api.noroff.dev/online-shop";
 const productGridSection = document.querySelector(".product-grid-section");
 
 const apiItems = await importsStart.getApi(apiEndPoint, productGridSection);
-console.log(apiItems.data);
 
 const carouselContainer = document.querySelector(".carousel-container");
 const carouselItemMain = document.getElementById("carousel-item-main");
@@ -56,6 +55,7 @@ const blackHeadphones = apiItemsArray[13];
 const whiteSneakers = apiItemsArray[22];
 const organicShampoo = apiItemsArray[17];
 
+/* Show price and discountedPrice in correct way */
 export function changePrice(oldPrice, item) {
   if (oldPrice.classList.contains("product-start-number-standard")) {
     oldPrice.textContent = `${item.price}:-`;
@@ -64,6 +64,8 @@ export function changePrice(oldPrice, item) {
   }
 }
 
+/* If there is no discountedPrice then delete one from DOM, 
+otherwise show its been discounted with a line through */
 export function checkPrices(standardPrice, discountedPrice) {
   if (standardPrice.textContent === discountedPrice.textContent) {
     standardPrice.remove();
@@ -72,15 +74,18 @@ export function checkPrices(standardPrice, discountedPrice) {
   }
 }
 
+/* Input one value to change to the second */
 export function changeValue(oldValue, newValue) {
   oldValue.textContent = newValue;
 }
 
+/* Change image for one from API */
 export function changeImage(oldImage, apiProduct) {
   oldImage.src = apiProduct.image.url;
   oldImage.alt = apiProduct.title;
 }
 
+/* Changing/removing stars based on API-item rating */
 export function changeStars(ratingContainer, rating) {
   const halfStar = document.createElement("p");
   halfStar.textContent = "\u2BE8";
@@ -140,6 +145,7 @@ export function changeStars(ratingContainer, rating) {
   }
 }
 
+/* Adding stars based on rating from API-Item */
 export function addStars(ratingContainer, rating) {
   const halfStar = document.createElement("p");
   halfStar.textContent = "\u2BE8";
@@ -217,16 +223,19 @@ export function addHREFtoAnchors(anchor) {
   anchor.setAttribute("href", "product/index.html");
 }
 
+/* For knowing what the clicked item's ID is */
 export function addID(linkingElement, specificAPIProduct) {
   linkingElement.dataset.buttonid = specificAPIProduct.id;
 }
 
+/* Accessing ID later */
 export function addProductIDToStorage(anchor) {
   const idToAdd = anchor.dataset.buttonid;
   sessionStorage.removeItem("clickedProductID");
   sessionStorage.setItem("clickedProductID", `${idToAdd}`);
 }
 
+/* Adding the correct href-address and product ID to carousel-item-CTAs */
 export function carouselCTAS() {
   allCarouselAnchors.forEach((anchor) => {
     addHREFtoAnchors(anchor);
@@ -240,6 +249,7 @@ export function carouselCTAS() {
   });
 }
 
+/* Same as above for products */
 export function productAnchors() {
   allProductImageAnchors.forEach((anchor) => {
     addHREFtoAnchors(anchor);
@@ -255,6 +265,7 @@ export function productAnchors() {
   });
 }
 
+/* Adding images and ID to product carousel-items */
 export function carouselProduct(carouselID, specificAPIProduct) {
   const carouselImage = carouselID.firstElementChild;
   const carouselInformation = carouselID.lastElementChild;
@@ -264,6 +275,7 @@ export function carouselProduct(carouselID, specificAPIProduct) {
   addID(carouselButton, specificAPIProduct);
 }
 
+/* Adding products to grid */
 export function productGridProduct(gridID, specificAPIProduct) {
   const productImageAnchor = gridID.firstElementChild;
   const productImage = gridID.firstElementChild.firstElementChild;
@@ -292,6 +304,7 @@ export function productGridProduct(gridID, specificAPIProduct) {
   checkPrices(priceDOM, discountedPriceDOM);
 }
 
+/* Logic for carousel to be able to go from right/left item to left/right when reaching end */
 directionalButtonLeft.addEventListener("click", () => {
   if (carouselContainer.dataset.state === "state-start") {
     carouselItemMain.classList.remove("carousel-item-middle");
@@ -320,6 +333,7 @@ directionalButtonLeft.addEventListener("click", () => {
   }
 });
 
+/* Same as above */
 directionalButtonRight.addEventListener("click", () => {
   if (carouselContainer.dataset.state === "state-start") {
     carouselItemMain.classList.remove("carousel-item-middle");
@@ -350,7 +364,6 @@ directionalButtonRight.addEventListener("click", () => {
 
 const fetchedCart = localStorage.getItem("cart");
 const apiToken = sessionStorage.getItem("apiToken");
-console.log(apiToken);
 importsFunctions1.colorToIcons(fetchedCart, apiToken);
 importsFunctions1.mobileDropdownMenu();
 carouselCTAS();

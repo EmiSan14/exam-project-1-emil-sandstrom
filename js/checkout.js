@@ -20,6 +20,7 @@ const houseUnitAptNrInput = document.getElementById(
 const postalCodeInput = document.getElementById("postal-code-checkout");
 const checkoutSubmitButton = document.getElementById("checkout-submit");
 
+/* Adding items with their price and quantity to the summary */
 function populateCheckoutSummary(cartFromStorage) {
   const checkoutPageSummaryItems = document.createElement("div");
   checkoutPageSummaryItems.classList.add("summary-items-cart");
@@ -38,7 +39,7 @@ function populateCheckoutSummary(cartFromStorage) {
     const itemPrice = document.createElement("p");
     itemPrice.classList.add("text-align-right");
     let finalItemPrice = parseFloat(
-      cartItem.item.price * cartItem.quantity,
+      cartItem.item.discountedPrice * cartItem.quantity,
     ).toFixed(2);
     itemPrice.textContent = `${finalItemPrice}:-`;
     /* Add price to total */
@@ -97,7 +98,8 @@ function populateCheckoutSummary(cartFromStorage) {
   const summaryTotalsFinal = document.createElement("h5");
   summaryTotalsFinal.textContent = "Total:";
   const finalTotal = document.createElement("p");
-  const finalTotalPrice = parseFloat(totalPriceF + shippingCost).toFixed(2);
+  let totalPriceFloat = parseFloat(totalPriceF);
+  const finalTotalPrice = (totalPriceFloat + shippingCost).toFixed(2);
   finalTotal.textContent = `${finalTotalPrice}:-`;
   finalTotal.classList.add("final-total");
   checkoutPageSummaryFinal.appendChild(summaryTotalsFinal);
@@ -108,6 +110,8 @@ function populateCheckoutSummary(cartFromStorage) {
   checkoutPageSummaryTable.appendChild(checkoutPageSummaryTotalsContainer);
 }
 
+/* Adding the values from page to be used in summary on
+success screen as more comprehensive summary */
 function addFormValuesToStorage() {
   const checkedPaymentOption = document.querySelector(
     "input[name=payment-option]:checked",
@@ -133,9 +137,9 @@ function addFormValuesToStorage() {
   };
   const formValuesJSON = JSON.stringify(formValues);
   sessionStorage.setItem("purchaseInfo", formValuesJSON);
-  console.log("formValues:", formValues);
 }
 
+/* Logic for adding values to storage to be used on success-screen */
 checkoutSubmitButton.addEventListener("click", (event) => {
   const allValues = [
     firstNameInput,
@@ -163,13 +167,11 @@ checkoutSubmitButton.addEventListener("click", (event) => {
 });
 
 function checkoutPageOnStart() {
+  const fetchedApiToken = sessionStorage.getItem("apiToken");
+  importsFunctions1.mobileDropdownMenu();
+  importsFunctions1.colorToIcons(fetchedApiToken);
   const fetchedCart = importsFunctions1.fetchCart();
   populateCheckoutSummary(fetchedCart);
 }
 
 checkoutPageOnStart();
-
-// DON*T FORGET TO POTENTIALLY REMOVE THE REQUIRED
-// ATTRIBUTE OF SOME OF THE FORM-INPUTS
-// FIX PATTERNS
-// CART-FETCHER NEEDED

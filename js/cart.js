@@ -13,11 +13,10 @@ const discountCodeApplyButton = document.getElementById(
 
 function whenCartIsEmpty() {
   emptyCartMessage.classList.remove("hidden");
-  /* DON'T FORGET STYLING */
 }
 
+/* Add everything from cart to cart-page using stored cart */
 function populateCart(cartFromStorage) {
-  console.log("cartFromStorage:", cartFromStorage);
   emptyCartMessage.classList.add("hidden");
   cartFromStorage.forEach((cartItem) => {
     /* Container for product */
@@ -98,6 +97,7 @@ function populateCart(cartFromStorage) {
   cartPageCart.appendChild(clearCartButton);
 }
 
+/* Adding prices to summary and adding together to a total */
 function populateCartSummary(cartFromStorage) {
   const cartPageSummaryItems = document.createElement("div");
   cartPageSummaryItems.classList.add("summary-items-cart");
@@ -116,7 +116,7 @@ function populateCartSummary(cartFromStorage) {
     const itemPrice = document.createElement("p");
     itemPrice.classList.add("text-align-right");
     let finalItemPrice = parseFloat(
-      cartItem.item.price * cartItem.quantity,
+      cartItem.item.discountedPrice * cartItem.quantity,
     ).toFixed(2);
     itemPrice.textContent = `${finalItemPrice}:-`;
     /* Add price to total */
@@ -140,7 +140,7 @@ function populateCartSummary(cartFromStorage) {
   const summaryTotalsItems = document.createElement("h5");
   summaryTotalsItems.textContent = "Item(s):";
   const preShippingTotal = document.createElement("p");
-  const totalPriceF = parseFloat(totalPriceFinal).toFixed(2);
+  let totalPriceF = parseFloat(totalPriceFinal).toFixed(2);
   preShippingTotal.textContent = `${totalPriceF}:-`;
   cartPageSummaryTotals.appendChild(summaryTotalsItems);
   cartPageSummaryTotals.appendChild(preShippingTotal);
@@ -156,7 +156,7 @@ function populateCartSummary(cartFromStorage) {
   if (totalPriceF > 800) {
     shippingTotal.textContent = `Free:-`;
   } else {
-    shippingCost += 199;
+    shippingCost = 199;
     shippingTotal.textContent = `${shippingCost}:-`;
   }
   cartPageSummaryShipping.appendChild(summaryTotalsShipping);
@@ -169,7 +169,8 @@ function populateCartSummary(cartFromStorage) {
   const summaryTotalsFinal = document.createElement("h5");
   summaryTotalsFinal.textContent = "Total:";
   const finalTotal = document.createElement("p");
-  const finalTotalPrice = parseFloat(totalPriceF + shippingCost).toFixed(2);
+  let totalPriceFloat = parseFloat(totalPriceF);
+  const finalTotalPrice = (totalPriceFloat + shippingCost).toFixed(2);
   finalTotal.textContent = `${finalTotalPrice}:-`;
   cartPageSummaryFinal.appendChild(summaryTotalsFinal);
   cartPageSummaryFinal.appendChild(finalTotal);
@@ -186,6 +187,7 @@ function populateCartSummary(cartFromStorage) {
   cartPageSummaryTable.appendChild(checkoutButton);
 }
 
+/* Removing all items from cart with warning beforehand */
 function clearCartFunctionality() {
   const clearCartButton = document.querySelector(".clear-cart-button");
   const clearCartMessage = document.querySelector(".clear-cart-message");
@@ -204,14 +206,12 @@ function clearCartFunctionality() {
   });
 }
 
+/* Trashcan-icons remove their specific item by splicing out the item from cart-array */
 function removeCartItemFunctionality(fetchedCart) {
   const allTrashcanIcons = document.querySelectorAll(".fa-trash-can");
-  console.log(allTrashcanIcons);
   allTrashcanIcons.forEach((trashcan) => {
     const cartItemID = trashcan.parentElement.parentElement.dataset.buttonid;
-    console.log(cartItemID);
     trashcan.addEventListener("click", () => {
-      console.log("fetchedCart", fetchedCart);
       for (let i = 0; i < fetchedCart.length; i++) {
         if (fetchedCart[i].item.id === cartItemID) {
           fetchedCart.splice(i, i + 1);
@@ -223,6 +223,7 @@ function removeCartItemFunctionality(fetchedCart) {
   });
 }
 
+/* Logic for decreasing item quantity, but not below 1 */
 function decreaseCartItemQuantity(fetchedCart) {
   const allSubtractButtons = document.querySelectorAll(".subtract-button");
 
@@ -248,6 +249,7 @@ function decreaseCartItemQuantity(fetchedCart) {
   });
 }
 
+/* Opposite of above */
 function increaseCartItemQuantity(fetchedCart) {
   const allAddButtons = document.querySelectorAll(".add-button");
 
@@ -271,9 +273,11 @@ function increaseCartItemQuantity(fetchedCart) {
 }
 
 function cartPageOnStart() {
+  importsFunctions1.mobileDropdownMenu();
   const fetchedApiToken = sessionStorage.getItem("apiToken");
+  importsFunctions1.colorToIcons(fetchedApiToken);
   const fetchedCart = importsFunctions1.fetchCart();
-  if (fetchedCart.length === 0 || !fetchedApiToken) {
+  if (fetchedCart.length === 0 || !fetchedCart || !fetchedApiToken) {
     whenCartIsEmpty();
   } else {
     populateCart(fetchedCart);
@@ -285,6 +289,7 @@ function cartPageOnStart() {
   }
 }
 
+/* No apply-code-button logic, only there for visuals */
 function discountCodeApplyButtonDisable() {
   discountCodeApplyButton.addEventListener("click", (event) => {
     event.preventDefault();
@@ -294,4 +299,3 @@ function discountCodeApplyButtonDisable() {
 cartPageOnStart();
 decreaseCartItemQuantity();
 discountCodeApplyButtonDisable();
-// localStorage.removeItem("cart");

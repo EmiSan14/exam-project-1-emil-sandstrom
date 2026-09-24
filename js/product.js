@@ -35,6 +35,7 @@ function addImage(apiProduct) {
   return productImage;
 }
 
+/* Adding review using correct container and API-item */
 function addReview(container, apiProduct) {
   if (apiProduct.reviews.length === 0) {
     const reviewItem = document.createElement("div");
@@ -64,6 +65,7 @@ function addReview(container, apiProduct) {
   }
 }
 
+/* Adding API-product-data to page */
 function populateSpecificProductPage(product) {
   /* SPECIFIC PRODUCT INFORMATION */
   const productInformation = document.createElement("div");
@@ -156,6 +158,8 @@ function populateSpecificProductPage(product) {
   specificProduct.appendChild(productReviewsAndTags);
 }
 
+/* For separate cart with only IDs
+ to use in adding/removing items from cart later*/
 function addIDsToSeparateCart(cart) {
   const cartOfIDs = [];
   cart.forEach((item) => {
@@ -169,10 +173,11 @@ function addIDsToSeparateCart(cart) {
       cartOfSingleIDOccurrence.push(ID);
     }
   });
-  console.log(cartOfSingleIDOccurrence);
   localStorage.setItem("cartOfOnlyIDs", cartOfSingleIDOccurrence);
 }
 
+/* Checks if cart is empty/not, then adds product and quantity differently based on
+if the item is already in cart. If in cart, then just adds to quantity */
 function addToCartListener() {
   const addToCartButton = document.querySelector(".add-to-cart-button");
   const receivedToken = sessionStorage.getItem("apiToken");
@@ -215,6 +220,7 @@ function addToCartListener() {
   });
 }
 
+/* Quantity-button-logic and not being able to go below 1 */
 function addOrSubtract() {
   const subtractButton = document.querySelector(".subtract-button");
   const quantityNumber = subtractButton.nextElementSibling;
@@ -251,7 +257,6 @@ function addOrSubtract() {
 export function fetchCart() {
   const cartInStorage = localStorage.getItem("cart");
   const usableCart = JSON.parse(cartInStorage);
-  console.log("cart:", usableCart);
   if (!usableCart) {
     return;
   } else {
@@ -261,6 +266,7 @@ export function fetchCart() {
   }
 }
 
+/* Showing product URL if share-button is clicked */
 function shareButtonURL() {
   const shareButton = document.querySelector(".share-button");
   const shareButtonMessageDiv = document.querySelector(
@@ -281,10 +287,10 @@ function shareButtonURL() {
 
 const fetchedApiToken = sessionStorage.getItem("apiToken");
 importsFunctions1.colorToIcons(fetchedApiToken);
+importsFunctions1.mobileDropdownMenu();
 populateSpecificProductPage(apiItem);
 importsFunctions1.errorMessageDismiss();
 addToCartListener();
 fetchCart();
 shareButtonURL();
 addOrSubtract();
-// localStorage.removeItem("cart");
