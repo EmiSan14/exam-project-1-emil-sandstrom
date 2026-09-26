@@ -200,10 +200,6 @@ main {
   margin-top: var(--small-distance-mobile);
 }
 
-#main-cart {
-  margin-bottom: 240px;
-}
-
 .carousel,
 .product-grid-section h2,
 .specific-product-information,
@@ -238,6 +234,7 @@ main {
 .specific-product-reviews-and-tags h3,
 .specific-product-reviews-and-tags > p,
 .clear-cart-button,
+.empty-cart-message,
 .checkout-form-payment-option,
 .success-success-message h3,
 .summary-details-success h4,
@@ -1745,8 +1742,6 @@ img,
 
   .cart-summary {
     width: 43%;
-    position: absolute;
-    right: var(--small-distance-tablet);
   }
 
   .section-success {
